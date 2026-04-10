@@ -6,10 +6,18 @@
 material = SubResource("StandardMaterial3D_51e2h")
 top_radius = 25.743
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_51e2h"]
+radius = 25.88623
+
 [node name="Level" type="Node3D" unique_id=1568260822]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1170763996]
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1670294222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9483936, 0)
 mesh = SubResource("CylinderMesh_tumq0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1377540485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00109, 0)
+shape = SubResource("CylinderShape3D_51e2h")

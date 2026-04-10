@@ -8,7 +8,8 @@ extends CharacterBody3D
 var score = 0
 
 func _ready() -> void:
-	signals.killed_mob.connect(increase_score)
+	#signals.killed_mob.connect(increase_score)
+	pass
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -46,13 +47,13 @@ func _physics_process(delta: float) -> void:
 	
 	print($CameraPivot.position.distance_to($CameraPivot/SpringArm3D/PlayerCamera.position))
 	print($CameraPivot/SpringArm3D.spring_length * CAMERA_ZOOM_RATIO)
-	if $CameraPivot.position.distance_to($CameraPivot/SpringArm3D/PlayerCamera.position) <= $CameraPivot/SpringArm3D.spring_length * CAMERA_ZOOM_RATIO:
-		for i in range($Pivot/Character/Sphere_001.get_surface_override_material_count()):
-			var new_opacity = ($CameraPivot.position.distance_to($CameraPivot/SpringArm3D/PlayerCamera.position)) / ($CameraPivot/SpringArm3D.spring_length * CAMERA_ZOOM_RATIO)
-			var material = $Pivot/Character/Sphere_001.get_active_material(i).duplicate()
-			material.transparency = true
-			material.albedo_color.a = new_opacity
-			$Pivot/Character/Sphere_001.set_surface_override_material(i, material)
+	##if $CameraPivot.position.distance_to($CameraPivot/SpringArm3D/PlayerCamera.position) <= $CameraPivot/SpringArm3D.spring_length * CAMERA_ZOOM_RATIO:
+		#for i in range($Pivot/Character/.get_surface_override_material_count()):
+			#var new_opacity = ($CameraPivot.position.distance_to($CameraPivot/SpringArm3D/PlayerCamera.position)) / ($CameraPivot/SpringArm3D.spring_length * CAMERA_ZOOM_RATIO)
+			#var material = $Pivot/Character/Sphere_001.get_active_material(i).duplicate()
+			#material.transparency = true
+			#material.albedo_color.a = new_opacity
+			#$Pivot/Character/Sphere_001.set_surface_override_material(i, material)
 			
 	move_and_slide()
 

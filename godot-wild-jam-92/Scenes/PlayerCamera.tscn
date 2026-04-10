@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bipg8rmp0ecga"]
+
+[ext_resource type="Script" uid="uid://bvlwgiuo1ppmj" path="res://Scripts/player_camera.gd" id="1_1hkb3"]
+
+[node name="CameraPivot" type="Node3D" unique_id=534410558]
+transform = Transform3D(0.99005556, 0, -0.14067662, 0, 1, 0, 0.14067662, 0, 0.99005556, 0, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=699151362]
+spring_length = 20.0
+
+[node name="PlayerCamera" type="Camera3D" parent="SpringArm3D" unique_id=234234169]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1.1920929e-07, 4.516, 8.373001)
+script = ExtResource("1_1hkb3")
