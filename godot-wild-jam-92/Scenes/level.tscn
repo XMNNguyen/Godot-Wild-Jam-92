@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bymv4u4xnm543"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51e2h"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tumq0"]
+material = SubResource("StandardMaterial3D_51e2h")
+top_radius = 25.743
+
+[node name="Level" type="Node3D" unique_id=1568260822]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1170763996]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1670294222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9483936, 0)
+mesh = SubResource("CylinderMesh_tumq0")

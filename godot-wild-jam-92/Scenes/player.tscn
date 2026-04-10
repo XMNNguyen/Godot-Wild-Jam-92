@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://tyxyb8u2ab00"]
+
+[ext_resource type="Script" uid="uid://b2yh6b8stgiui" path="res://scripts/player/player.gd" id="1_hjaqi"]
+[ext_resource type="PackedScene" uid="uid://d0ypm0v45pwdv" path="res://art/player.glb" id="1_xo3ru"]
+[ext_resource type="PackedScene" uid="uid://b5aq0nw0sd6rw" path="res://scene/PlayerCamera.tscn" id="2_fvtld"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hjaqi"]
+radius = 1.003418
+height = 2.0617676
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fvtld"]
+height = 0.9020996
+radius = 0.7895508
+
+[node name="Player" type="CharacterBody3D" unique_id=1612110732]
+collision_layer = 2
+script = ExtResource("1_hjaqi")
+SPEED = null
+JUMP_VELOCITY = null
+GRAVITY = null
+CAMERA_ZOOM_RATIO = null
+
+[node name="CameraPivot" parent="." unique_id=534410558 instance=ExtResource("2_fvtld")]
+
+[node name="Pivot" type="Node3D" parent="." unique_id=915778554]
+
+[node name="Character" parent="Pivot" unique_id=51180414 instance=ExtResource("1_xo3ru")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1729149767]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.3606449e-09, -0.03112793)
+shape = SubResource("CapsuleShape3D_hjaqi")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=157766024]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1665628689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013376236, 0)
+shape = SubResource("CylinderShape3D_fvtld")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=971749807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19376159, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=2039139978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07228696, 0)
+shape = SubResource("CylinderShape3D_fvtld")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1736665879]
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
