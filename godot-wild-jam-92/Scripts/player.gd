@@ -5,7 +5,8 @@ extends CharacterBody3D
 @export var GRAVITY : float = 500
 @export var CAMERA_ZOOM_RATIO : float = 0.75
 
-var score = 0
+var score := 0
+var num_jumps := 2
 
 func _ready() -> void:
 	#signals.killed_mob.connect(increase_score)
@@ -18,17 +19,19 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	# player cant be hurt in air and can only kill in air
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and num_jumps < 2:
 		$Hitbox.monitoring = true
 		$Hitbox.monitorable = true
 		$Hurtbox.monitoring = false
 		$Hurtbox.monitorable = false
 		velocity.y = JUMP_VELOCITY
+		num_jumps += 1
 	elif is_on_floor():
 		$Hitbox.monitoring = false
 		$Hitbox.monitorable = false
 		$Hurtbox.monitoring = true
 		$Hurtbox.monitorable = true
+		num_jumps = 0
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
