@@ -13,5 +13,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.471741, 0)
 collision_layer = 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=599809789]
-transform = Transform3D(1, 0, 0, 0, 0.012356638, 0.99992365, 0, -0.99992365, 0.012356638, 0, 20.836702, 0)
+transform = Transform3D(0.7084507, 0.0087208245, 0.7057064, -0.7057603, 0.008754068, 0.70839655, 0, -0.99992365, 0.012356638, -0.15108109, 20.836702, 0)
 shadow_enabled = true
