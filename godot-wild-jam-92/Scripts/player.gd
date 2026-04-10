@@ -45,8 +45,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	print($CameraPivot.position.distance_to($CameraPivot/SpringArm3D/PlayerCamera.position))
-	print($CameraPivot/SpringArm3D.spring_length * CAMERA_ZOOM_RATIO)
+	
 	##if $CameraPivot.position.distance_to($CameraPivot/SpringArm3D/PlayerCamera.position) <= $CameraPivot/SpringArm3D.spring_length * CAMERA_ZOOM_RATIO:
 		#for i in range($Pivot/Character/.get_surface_override_material_count()):
 			#var new_opacity = ($CameraPivot.position.distance_to($CameraPivot/SpringArm3D/PlayerCamera.position)) / ($CameraPivot/SpringArm3D.spring_length * CAMERA_ZOOM_RATIO)

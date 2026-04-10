@@ -9,4 +9,9 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.063687325, 0)
 
 [node name="Player" parent="." unique_id=1612110732 instance=ExtResource("2_bo1nx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.216044, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.471741, 0)
+collision_layer = 0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=599809789]
+transform = Transform3D(1, 0, 0, 0, 0.012356638, 0.99992365, 0, -0.99992365, 0.012356638, 0, 20.836702, 0)
+shadow_enabled = true
