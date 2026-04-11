@@ -4,9 +4,9 @@ extends CharacterBody3D
 @export var JUMP_VELOCITY : float = 4.5
 @export var GRAVITY : float = 500
 @export var CAMERA_ZOOM_RATIO : float = 0.75
-@export var DASH_SPEED : float = 20
+@export var DASH_SPEED : float = 20.0
 @export var ACCELERATION : float = 15.0
-@export var SLOW_DOWN : float = 12.0
+@export var SLOW_DOWN : float = 40.0
 
 var score := 0
 var num_jumps := 2
@@ -55,9 +55,12 @@ func _physics_process(delta: float) -> void:
 		$Pivot.basis = $Pivot.basis.slerp(target_basis, 0.2)
 		
 		# handle dashing
-	else:
-		velocity.x = move_toward(velocity.x, 0, SLOW_DOWN * delta)
-		velocity.z = move_toward(velocity.z, 0, SLOW_DOWN * delta)
+		if Input.is_action_just_pressed("dash"):
+			speed += DASH_SPEED
+	elif is_on_floor():
+		var slow_down = speed + SLOW_DOWN
+		velocity.x = move_toward(velocity.x, 0, slow_down * delta)
+		velocity.z = move_toward(velocity.z, 0, slow_down * delta)
 	
 	if velocity == Vector3(0, 0, 0):
 		speed = 0
