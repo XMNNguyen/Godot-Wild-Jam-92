@@ -6,7 +6,8 @@ extends Camera3D
 @onready var player = $"../../.."
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
 
 
 func _input(event) -> void:
