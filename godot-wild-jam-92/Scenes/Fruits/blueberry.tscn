@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cud8jau4hfkei"]
+
+[ext_resource type="Script" uid="uid://qx3v4sr31i0s" path="res://Scripts/Assets/Fruits/fruit.gd" id="1_ar2up"]
+[ext_resource type="PackedScene" uid="uid://b1of5dmcdwir7" path="res://Art+Sprites/Fruit/Blueberry/Blueberry.glb" id="2_4cmrj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ar2up"]
+radius = 1.0
+
+[node name="Blueberry" type="RigidBody3D" unique_id=813304657]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_ar2up")
+FRUIT_NAME = "blueberry"
+metadata/_custom_type_script = "uid://qx3v4sr31i0s"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=168234413]
+shape = SubResource("SphereShape3D_ar2up")
+
+[node name="Blueberry" parent="." unique_id=392354424 instance=ExtResource("2_4cmrj")]

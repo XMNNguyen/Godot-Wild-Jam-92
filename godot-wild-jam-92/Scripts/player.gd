@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 @export var SPEED : float = 10.0
-@export var JUMP_VELOCITY : float = 4.5
-@export var GRAVITY : float = 500
+@export var JUMP_VELOCITY : float = 20
+@export var GRAVITY : float = 30
 @export var CAMERA_ZOOM_RATIO : float = 0.75
 @export var DASH_SPEED : float = 5.0
 @export var ACCELERATION : float = 15.0
@@ -16,11 +16,13 @@ var speed = 0
 var can_dash = true
 var dashing = false
 
+
 func _ready() -> void:
-	#signals.killed_mob.connect(increase_score)
-	pass
+	PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY, GRAVITY)
+	
 
 func _physics_process(delta: float) -> void:
+	print(get_gravity())
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

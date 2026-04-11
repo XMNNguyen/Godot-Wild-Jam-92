@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://byah5hywye6b5"]
+
+[ext_resource type="Script" uid="uid://qx3v4sr31i0s" path="res://Scripts/Assets/Fruits/fruit.gd" id="1_5eixl"]
+
+[node name="Fruit" type="RigidBody3D" unique_id=1471115776]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_5eixl")
