@@ -1,17 +1,20 @@
 extends CharacterBody3D
 
-@export var SPEED : float = 20.0
+@export var SPEED : float = 10.0
 @export var JUMP_VELOCITY : float = 4.5
 @export var GRAVITY : float = 500
 @export var CAMERA_ZOOM_RATIO : float = 0.75
-@export var DASH_SPEED : float = 20.0
+@export var DASH_SPEED : float = 5.0
 @export var ACCELERATION : float = 15.0
 @export var SLOW_DOWN : float = 40.0
+@export var DASH_DURATION : float = 0.3
+@export var DASH_CD : float = 0.8
 
 var score := 0
 var num_jumps := 2
-
 var speed = 0
+var can_dash = true
+var dashing = false
 
 func _ready() -> void:
 	#signals.killed_mob.connect(increase_score)
@@ -24,7 +27,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	# player cant be hurt in air and can only kill in air
-	if Input.is_action_just_pressed("jump") and num_jumps < 2:
+	if Input.is_action_just_pressed("jump") and num_jumps < 2 and not dashing:
 		$Hitbox.monitoring = true
 		$Hitbox.monitorable = true
 		$Hurtbox.monitoring = false
@@ -42,9 +45,10 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var relativeDir := Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, $CameraPivot/SpringArm3D.rotation.y)
 	
-	print(velocity)
-	
-	if relativeDir:
+	if dashing:
+		velocity = relativeDir * SPEED * DASH_SPEED
+		velocity.y = 0
+	elif relativeDir:
 		speed = move_toward(speed, SPEED, ACCELERATION * delta)
 
 		velocity.x = relativeDir.x * speed
@@ -55,8 +59,9 @@ func _physics_process(delta: float) -> void:
 		$Pivot.basis = $Pivot.basis.slerp(target_basis, 0.2)
 		
 		# handle dashing
-		if Input.is_action_just_pressed("dash"):
-			speed += DASH_SPEED
+		if Input.is_action_just_pressed("dash") && can_dash:
+			dash()
+			
 	elif is_on_floor():
 		var slow_down = speed + SLOW_DOWN
 		velocity.x = move_toward(velocity.x, 0, slow_down * delta)
@@ -74,6 +79,20 @@ func _physics_process(delta: float) -> void:
 			#$Pivot/Character/Sphere_001.set_surface_override_material(i, material)
 			
 	move_and_slide()
+
+
+# handles player dashing
+func dash() -> void:
+	can_dash = false
+	dashing = true
+	
+	await get_tree().create_timer(DASH_DURATION).timeout
+	dashing = false
+	
+	await get_tree().create_timer(DASH_CD).timeout
+	
+	can_dash = true
+	
 
 func increase_score(amount) -> void:
 	velocity.y = JUMP_VELOCITY
