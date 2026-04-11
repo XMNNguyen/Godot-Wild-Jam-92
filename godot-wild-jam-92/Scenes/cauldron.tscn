@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cv12mgfyr1wu0"]
+
+[ext_resource type="Script" uid="uid://iy47m3cpolnp" path="res://Scripts/Assets/Cauldron/cauldron.gd" id="1_2rulr"]
+[ext_resource type="PackedScene" uid="uid://dwdivsabredfv" path="res://Art+Sprites/Assets/Cauldron.glb" id="1_2xink"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2rulr"]
+height = 0.66052246
+radius = 0.93066406
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_r1an6"]
+height = 0.24972534
+radius = 0.8574219
+
+[node name="Cauldron" type="StaticBody3D" unique_id=943779588]
+script = ExtResource("1_2rulr")
+
+[node name="Cauldron" parent="." unique_id=1234669519 instance=ExtResource("1_2xink")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=466541025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12408447, 0)
+shape = SubResource("CylinderShape3D_2rulr")
+
+[node name="Pot_Insert" type="Area3D" parent="." unique_id=1201150343]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pot_Insert" unique_id=1467875517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4044543, 0)
+shape = SubResource("CylinderShape3D_r1an6")
