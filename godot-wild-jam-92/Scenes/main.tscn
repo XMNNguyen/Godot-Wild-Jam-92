@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://xorhewq25ec0"]
 
+[ext_resource type="Script" uid="uid://d1kuv8xk0fhi" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://bymv4u4xnm543" path="res://Scenes/level.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://dkawfgs4d2x2v" path="res://Scenes/Fruits/strawberry.tscn" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://tyxyb8u2ab00" path="res://Scenes/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://cajj7c5jy3enk" path="res://Scenes/ui.tscn" id="2_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://cv12mgfyr1wu0" path="res://Scenes/cauldron.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://dnwn3i1ofj3i4" path="res://Scenes/Fruits/grapes.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://cud8jau4hfkei" path="res://Scenes/Fruits/blueberry.tscn" id="6_21xkr"]
 
 [node name="Main" type="Node" unique_id=1932542925]
+script = ExtResource("1_344ge")
+
+[node name="Ui" parent="." unique_id=1089604113 instance=ExtResource("2_ynf5e")]
 
 [node name="Strawberry" parent="." unique_id=783218628 instance=ExtResource("1_jjvhh")]
 transform = Transform3D(0.80207807, 0.5972192, 0, -0.5972192, 0.80207807, 0, 0, 0, 1, 10.228358, 4.1713576, -8.1882305)

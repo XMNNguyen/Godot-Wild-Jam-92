@@ -21,5 +21,5 @@ func _on_pot_insert_body_entered(body: Node3D) -> void:
 		# change color when fruit comes into contact 
 		var new_color : Color = color.lerp(body.COLOR, 0.5)
 		change_color(new_color)
-		signals.fruit_collected.emit()
+		signals.fruit_collected.emit(body.SCORE)
 		body.queue_free()
