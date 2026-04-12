@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://bymv4u4xnm543"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_51e2h"]
+rough = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51e2h"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tumq0"]
@@ -12,6 +15,7 @@ radius = 25.88623
 [node name="Level" type="Node3D" unique_id=1568260822]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1170763996]
+physics_material_override = SubResource("PhysicsMaterial_51e2h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1670294222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9483936, 0)

@@ -38,7 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 0.043148544, 0.9990687, 0, -0.9990687, 0.043
 shape = SubResource("CapsuleShape3D_6t5aa")
 
 [node name="PickupPoint" type="Node3D" parent="Pivot" unique_id=393226289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9044435, -2.0216231)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71109295, -2.8572574)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1729149767]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.3606449e-09, -0.03112793)

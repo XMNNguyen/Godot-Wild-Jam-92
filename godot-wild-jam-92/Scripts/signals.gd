@@ -1,4 +1,4 @@
 class_name Signals
 extends Node
 
-signal in_pickup_radius()
+signal fruit_collected()

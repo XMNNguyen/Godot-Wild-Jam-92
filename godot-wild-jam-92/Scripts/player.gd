@@ -16,6 +16,10 @@ extends CharacterBody3D
 @export var DASH_DURATION : float = 0.3
 @export var DASH_CD : float = 0.8
 
+# THROW VARS
+@export var THROW_SPEED : float = 10000
+@export var VELOCITY_SCALE : float = 1000
+
 var score := 0
 var num_jumps := 2
 var speed = 0
@@ -82,6 +86,7 @@ func _physics_process(delta: float) -> void:
 	## ITEM PICKUP AND DROP
 	if Input.is_action_just_pressed("pickup") and picked_up:
 		picked_up.is_picked_up = false
+		picked_up.apply_central_impulse((-$Pivot.global_transform.basis.z * THROW_SPEED) + (Vector3(velocity.x, 20, velocity.z) * VELOCITY_SCALE))
 		picked_up = null
 	elif Input.is_action_just_pressed("pickup") and target:
 		target.is_picked_up = true
