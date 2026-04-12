@@ -2,7 +2,13 @@
 
 [ext_resource type="Script" uid="uid://qx3v4sr31i0s" path="res://Scripts/Assets/Fruits/fruit.gd" id="1_5eixl"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5eixl"]
+rough = true
+bounce = 0.64
+absorbent = true
+
 [node name="Fruit" type="RigidBody3D" unique_id=1471115776]
 collision_layer = 4
 collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_5eixl")
 script = ExtResource("1_5eixl")

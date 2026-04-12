@@ -1,12 +1,18 @@
 extends CharacterBody3D
 
+# MOVEMENT VARS
 @export var SPEED : float = 10.0
 @export var JUMP_VELOCITY : float = 20
 @export var GRAVITY : float = 30
-@export var CAMERA_ZOOM_RATIO : float = 0.75
-@export var DASH_SPEED : float = 5.0
 @export var ACCELERATION : float = 15.0
 @export var SLOW_DOWN : float = 40.0
+@export var PUSH_FORCE : float = 40.0
+
+# CAMERA VARS
+@export var CAMERA_ZOOM_RATIO : float = 0.75
+
+# DASH VARS
+@export var DASH_SPEED : float = 5.0
 @export var DASH_DURATION : float = 0.3
 @export var DASH_CD : float = 0.8
 
@@ -22,7 +28,6 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	print(get_gravity())
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -72,6 +77,8 @@ func _physics_process(delta: float) -> void:
 	if velocity == Vector3(0, 0, 0):
 		speed = 0
 	
+	
+	# TODO: re-add functionality for camera to make character see through when too close
 	##if $CameraPivot.position.distance_to($CameraPivot/SpringArm3D/PlayerCamera.position) <= $CameraPivot/SpringArm3D.spring_length * CAMERA_ZOOM_RATIO:
 		#for i in range($Pivot/Character/.get_surface_override_material_count()):
 			#var new_opacity = ($CameraPivot.position.distance_to($CameraPivot/SpringArm3D/PlayerCamera.position)) / ($CameraPivot/SpringArm3D.spring_length * CAMERA_ZOOM_RATIO)
@@ -79,7 +86,12 @@ func _physics_process(delta: float) -> void:
 			#material.transparency = true
 			#material.albedo_color.a = new_opacity
 			#$Pivot/Character/Sphere_001.set_surface_override_material(i, material)
-			
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * PUSH_FORCE)
+		
 	move_and_slide()
 
 
