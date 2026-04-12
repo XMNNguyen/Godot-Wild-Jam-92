@@ -13,6 +13,7 @@
 script = ExtResource("1_344ge")
 
 [node name="Ui" parent="." unique_id=1089604113 instance=ExtResource("2_ynf5e")]
+MAX_FUEL = null
 
 [node name="Strawberry" parent="." unique_id=783218628 instance=ExtResource("1_jjvhh")]
 transform = Transform3D(0.80207807, 0.5972192, 0, -0.5972192, 0.80207807, 0, 0, 0, 1, 10.228358, 4.1713576, -8.1882305)

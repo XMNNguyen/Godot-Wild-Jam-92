@@ -16,9 +16,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if tick_timer.is_stopped():
-		fuel -= 1
-		set_tick()
+		fuel -= 10
 		print(fuel)
+		set_tick()
+	
+	if fuel <= 0:
+		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+
 
 
 func set_tick() -> void:
@@ -30,4 +34,3 @@ func set_tick() -> void:
 
 func add_fuel(fuel_amount : float) -> void:
 	fuel = min(fuel + fuel_amount, MAX_FUEL)
-	print(fuel)
