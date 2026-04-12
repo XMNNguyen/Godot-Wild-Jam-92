@@ -21,6 +21,8 @@ var num_jumps := 2
 var speed = 0
 var can_dash = true
 var dashing = false
+var target : Fruit = null
+var picked_up : Fruit = null
 
 
 func _ready() -> void:
@@ -32,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
+	## JUMP
 	# player cant be hurt in air and can only kill in air
 	if Input.is_action_just_pressed("jump") and num_jumps < 2 and not dashing:
 		$Hitbox.monitoring = true
@@ -48,10 +50,12 @@ func _physics_process(delta: float) -> void:
 		$Hurtbox.monitorable = true
 		num_jumps = 0
 
-	# Get the input direction and handle the movement/deceleration.
+	
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var relativeDir := Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, $CameraPivot/SpringArm3D.rotation.y)
 	
+	## MOVE AND DASH
+	# handle horizontal movement commands
 	if dashing:
 		velocity = relativeDir * SPEED * DASH_SPEED
 		velocity.y = 0
@@ -68,14 +72,20 @@ func _physics_process(delta: float) -> void:
 		# handle dashing
 		if Input.is_action_just_pressed("dash") && can_dash:
 			dash()
-			
 	elif is_on_floor():
 		var slow_down = speed + SLOW_DOWN
 		velocity.x = move_toward(velocity.x, 0, slow_down * delta)
 		velocity.z = move_toward(velocity.z, 0, slow_down * delta)
-	
 	if velocity == Vector3(0, 0, 0):
 		speed = 0
+	
+	## ITEM PICKUP AND DROP
+	if Input.is_action_just_pressed("pickup") and picked_up:
+		picked_up.is_picked_up = false
+		picked_up = null
+	elif Input.is_action_just_pressed("pickup") and target:
+		target.is_picked_up = true
+		picked_up = target
 	
 	
 	# TODO: re-add functionality for camera to make character see through when too close
@@ -87,6 +97,7 @@ func _physics_process(delta: float) -> void:
 			#material.albedo_color.a = new_opacity
 			#$Pivot/Character/Sphere_001.set_surface_override_material(i, material)
 	
+	# Handle proper rigid body collisions
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody3D:
@@ -119,3 +130,13 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 		$"../SpawnTimer".stop()
 		queue_free()
 		$"../UI/RetryButton".show()
+
+
+func _on_pickup_range_body_entered(body: Node3D) -> void:
+	if (body.is_in_group("fruit")):
+		target = body
+
+
+func _on_pickup_range_body_exited(body: Node3D) -> void:
+	if (body.is_in_group("fruit")):
+		target = null

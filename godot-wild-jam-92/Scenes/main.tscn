@@ -16,6 +16,7 @@ transform = Transform3D(0.80207807, 0.5972192, 0, -0.5972192, 0.80207807, 0, 0, 
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.733078, -0.73427486, 7.201477)
 
 [node name="Player" parent="." unique_id=1612110732 instance=ExtResource("2_bo1nx")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.441492, 1.2930546, 0)
 collision_layer = 1
 

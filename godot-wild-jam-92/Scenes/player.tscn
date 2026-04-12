@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bipg8rmp0ecga" path="res://Scenes/PlayerCamera.tscn" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://bxq30sbj5wnfq" path="res://Art+Sprites/Wizard_Cat.glb" id="3_6t5aa"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t5aa"]
+radius = 1.8476563
+height = 4.3251953
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hjaqi"]
 radius = 1.003418
 height = 2.0617676
@@ -24,6 +28,17 @@ script = ExtResource("1_6t5aa")
 [node name="Pivot" type="Node3D" parent="." unique_id=915778554]
 
 [node name="Wizard_Cat" parent="Pivot" unique_id=1592886883 instance=ExtResource("3_6t5aa")]
+
+[node name="Pickup_Range" type="Area3D" parent="Pivot" unique_id=275918943]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/Pickup_Range" unique_id=533807826]
+transform = Transform3D(1, 0, 0, 0, 0.043148544, 0.9990687, 0, -0.9990687, 0.043148544, -0.022727966, 0.18507652, -1.9964459)
+shape = SubResource("CapsuleShape3D_6t5aa")
+
+[node name="PickupPoint" type="Node3D" parent="Pivot" unique_id=393226289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9044435, -2.0216231)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1729149767]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.3606449e-09, -0.03112793)
@@ -48,4 +63,7 @@ shape = SubResource("CylinderShape3D_fvtld")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1736665879]
 
+[connection signal="body_entered" from="Pivot/Pickup_Range" to="." method="_on_pickup_range_body_entered"]
+[connection signal="body_exited" from="Pivot/Pickup_Range" to="." method="_on_pickup_range_body_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_exited" from="Hurtbox" to="." method="_on_hurtbox_area_exited"]

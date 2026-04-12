@@ -8,13 +8,23 @@ extends RigidBody3D
 @export var FRUIT_NAME : String = "fruit"
 @export var MASS : float = 100.0
 
+var is_picked_up : bool = false
 
 func _ready() -> void:
 	mass = MASS
+	add_to_group("fruit")
+
+
+func _process(delta: float) -> void:
+	if is_picked_up:
+		$CollisionShape3D.disabled = true 
+		global_position = lerp(global_position, %Player/Pivot/PickupPoint.global_position, 1.0)
+	else:
+		$CollisionShape3D.disabled = false 
 
 
 func _integrate_forces(state):
-	# Example: Reduce velocity by 10% each frame for more drag
+	# add more drag to object
 	state.linear_velocity *= 0.9
 
 

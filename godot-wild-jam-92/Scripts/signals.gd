@@ -1,5 +1,4 @@
 class_name Signals
 extends Node
 
-signal killed_mob()
-signal player_died()
+signal in_pickup_radius()
