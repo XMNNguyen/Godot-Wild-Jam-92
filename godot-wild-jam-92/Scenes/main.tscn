@@ -9,11 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://dnwn3i1ofj3i4" path="res://Scenes/Fruits/grapes.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://cud8jau4hfkei" path="res://Scenes/Fruits/blueberry.tscn" id="6_21xkr"]
 
+[sub_resource type="Environment" id="Environment_344ge"]
+background_mode = 1
+background_color = Color(0.7085486, 0.78074616, 1, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
+reflected_light_source = 1
+
 [node name="Main" type="Node" unique_id=1932542925]
 script = ExtResource("1_344ge")
 
 [node name="Ui" parent="." unique_id=1089604113 instance=ExtResource("2_ynf5e")]
-MAX_FUEL = null
 
 [node name="Strawberry" parent="." unique_id=783218628 instance=ExtResource("1_jjvhh")]
 transform = Transform3D(0.80207807, 0.5972192, 0, -0.5972192, 0.80207807, 0, 0, 0, 1, 10.228358, 4.1713576, -8.1882305)
@@ -38,3 +44,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.8812208, 2.831935, -12.1860
 
 [node name="Blueberry" parent="." unique_id=813304657 instance=ExtResource("6_21xkr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2, -11)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1553727087]
+environment = SubResource("Environment_344ge")

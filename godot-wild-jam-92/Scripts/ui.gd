@@ -4,7 +4,7 @@ extends Control
 @export var MAX_FUEL : int = 100
 
 var fuel : int = MAX_FUEL
-var tick_time : float = 1.0
+var tick_time : float = 5.0
 var tick_timer : Timer = null
 
 # Called when the node enters the scene tree for the first time.
@@ -16,7 +16,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if tick_timer.is_stopped():
-		fuel -= 10
+		fuel -= 1
 		print(fuel)
 		set_tick()
 	
