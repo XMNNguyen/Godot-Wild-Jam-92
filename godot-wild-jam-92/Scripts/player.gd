@@ -132,6 +132,10 @@ func increase_score(amount) -> void:
 	$"../UI/Score".text = "SCORE: %s" % score
 
 
+func get_pickup_point() -> Node3D:
+	return $Pivot/PickupPoint
+
+
 func _on_hurtbox_area_entered(area: Area3D) -> void:
 	if (area.name == "Hitbox"):
 		$"../SpawnTimer".stop()

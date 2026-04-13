@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://bymv4u4xnm543"]
 
+[ext_resource type="PackedScene" uid="uid://cv12mgfyr1wu0" path="res://Scenes/cauldron.tscn" id="1_tumq0"]
+[ext_resource type="PackedScene" uid="uid://cmjwtowrfevk3" path="res://Scenes/fruit_spawn.tscn" id="2_k5f4k"]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_51e2h"]
 rough = true
 
@@ -7,10 +10,50 @@ rough = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tumq0"]
 material = SubResource("StandardMaterial3D_51e2h")
-top_radius = 25.743
+top_radius = 30.0
+bottom_radius = 30.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_51e2h"]
 radius = 25.88623
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6phgx"]
+top_radius = 4.0
+bottom_radius = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_81xng"]
+top_radius = 8.0
+bottom_radius = 8.0
+height = 8.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wqkje"]
+top_radius = 8.0
+bottom_radius = 8.0
+height = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0f350"]
+top_radius = 6.0
+bottom_radius = 6.0
+height = 6.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8c0lf"]
+height = 4.7558594
+radius = 7.932617
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_754fn"]
+height = 7.3115234
+radius = 5.976074
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bvt00"]
+height = 7.7937636
+radius = 7.9750977
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oqgf2"]
+height = 2.6018834
+radius = 3.9560547
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k5f4k"]
+height = 4.7558594
+radius = 13.444824
 
 [node name="Level" type="Node3D" unique_id=1568260822]
 
@@ -24,3 +67,110 @@ mesh = SubResource("CylinderMesh_tumq0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1377540485]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00109, 0)
 shape = SubResource("CylinderShape3D_51e2h")
+
+[node name="Cauldron" parent="." unique_id=943779588 instance=ExtResource("1_tumq0")]
+transform = Transform3D(1.1999999, 0, 0, 0, 1.1999949, 0.0034557479, 0, -0.0034557479, 1.1999949, -1.529277, 0.9613194, 21.540941)
+
+[node name="Hill" type="StaticBody3D" parent="." unique_id=1258597138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2641926, -1.0553846, 0)
+physics_material_override = SubResource("PhysicsMaterial_51e2h")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Hill" unique_id=56286426]
+transform = Transform3D(1, 0, 0, 0, 0.9999481, 0.010192546, 0, -0.010192546, 0.9999481, 14.1725235, 3.1816525, -2.2742815)
+mesh = SubResource("CylinderMesh_6phgx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hill" unique_id=2095056840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.373077, 2.3670619, 4.185791)
+mesh = SubResource("CylinderMesh_81xng")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Hill" unique_id=528766492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.095106, 0.3166771, -2.3991299)
+mesh = SubResource("CylinderMesh_wqkje")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Hill" unique_id=378979823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.990286, 1.8344853, 8.356554)
+mesh = SubResource("CylinderMesh_0f350")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hill" unique_id=698683249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.062349, -0.041934013, -2.336701)
+shape = SubResource("CylinderShape3D_8c0lf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hill" unique_id=237335219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.992189, 1.1788273, 8.312065)
+shape = SubResource("CylinderShape3D_754fn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Hill" unique_id=1255849428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.389389, 2.4699008, 4.2404585)
+shape = SubResource("CylinderShape3D_bvt00")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Hill" unique_id=585529768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.079832, 2.8550014, -2.3588285)
+shape = SubResource("CylinderShape3D_oqgf2")
+
+[node name="Hill2" type="StaticBody3D" parent="." unique_id=130499249]
+transform = Transform3D(-0.6983992, -0.0011462678, -0.27338105, -0.0031880303, 0.74997646, 0.0049997745, 0.27336487, 0.005817848, -0.6983822, -9.8027, -0.38106918, 7.9132032)
+physics_material_override = SubResource("PhysicsMaterial_51e2h")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Hill2" unique_id=953344596]
+transform = Transform3D(1, 0, 0, 0, 0.9999481, 0.010192546, 0, -0.010192546, 0.9999481, 14.1725235, 3.1816525, -2.2742815)
+mesh = SubResource("CylinderMesh_6phgx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hill2" unique_id=221487542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.373077, 2.3670619, 4.185791)
+mesh = SubResource("CylinderMesh_81xng")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Hill2" unique_id=2110553377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.095106, 0.3166771, -2.3991299)
+mesh = SubResource("CylinderMesh_wqkje")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Hill2" unique_id=133693120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.990286, 1.8344853, 8.356554)
+mesh = SubResource("CylinderMesh_0f350")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hill2" unique_id=880282368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.062349, -0.041934013, -2.336701)
+shape = SubResource("CylinderShape3D_8c0lf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hill2" unique_id=960649478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.992189, 1.1788273, 8.312065)
+shape = SubResource("CylinderShape3D_754fn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Hill2" unique_id=204263713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.389389, 2.9810405, 4.2404585)
+shape = SubResource("CylinderShape3D_bvt00")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Hill2" unique_id=691736176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.079832, 2.8550014, -2.3588285)
+shape = SubResource("CylinderShape3D_oqgf2")
+
+[node name="Hill3" type="StaticBody3D" parent="." unique_id=712583663]
+transform = Transform3D(-0.6983992, -0.0011462678, -0.27338105, -0.0031880303, 0.74997646, 0.0049997745, 0.27336487, 0.005817848, -0.6983822, -9.8027, 0, -21.060295)
+physics_material_override = SubResource("PhysicsMaterial_51e2h")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Hill3" unique_id=1172277634]
+transform = Transform3D(1.6579912, 0.001367801, -0.37558022, -0.002682393, 0.99999845, -0.0013164821, 0.3755778, 0.0011038646, 1.6579921, -8.19602, 0.24612735, -6.030117)
+mesh = SubResource("CylinderMesh_wqkje")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hill3" unique_id=125485661]
+transform = Transform3D(1, -2.3283064e-10, 0, -2.3958273e-07, 1, 0, 0, -9.313226e-10, 1, -8.074517, -0.12781937, -5.8394737)
+shape = SubResource("CylinderShape3D_k5f4k")
+
+[node name="Spawners" type="Node3D" parent="." unique_id=4379949]
+
+[node name="FruitSpawn" parent="Spawners" unique_id=250028317 instance=ExtResource("2_k5f4k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 25.639404, 5.460083, 3.528685)
+
+[node name="FruitSpawn2" parent="Spawners" unique_id=1689444436 instance=ExtResource("2_k5f4k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 16.485653, 0, -17.339752)
+
+[node name="FruitSpawn3" parent="Spawners" unique_id=475867940 instance=ExtResource("2_k5f4k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -22.413546, 0, -9.38146)
+
+[node name="FruitSpawn4" parent="Spawners" unique_id=2110761026 instance=ExtResource("2_k5f4k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -19.71692, 3.3491502, 1.8692303)
+
+[node name="FruitSpawn5" parent="Spawners" unique_id=1693054362 instance=ExtResource("2_k5f4k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -11.050642, 1.6763501, -17.980429)
+
+[node name="FruitSpawn6" parent="Spawners" unique_id=875262104 instance=ExtResource("2_k5f4k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.798738, -24.627853)

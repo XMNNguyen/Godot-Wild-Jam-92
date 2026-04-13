@@ -3,9 +3,15 @@ extends Control
 
 @export var MAX_FUEL : int = 100
 
+@onready var player = %Player
+
 var fuel : int = MAX_FUEL
+
+# TIMERS
 var tick_time : float = 5.0
 var tick_timer : Timer = null
+var spawn_time : float = 10.0
+var spawn_timer : Timer = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,7 +27,6 @@ func _process(delta: float) -> void:
 	
 	if fuel <= 0:
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
-
 
 
 func set_tick() -> void:

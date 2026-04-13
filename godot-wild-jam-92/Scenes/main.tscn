@@ -2,13 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d1kuv8xk0fhi" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://bymv4u4xnm543" path="res://Scenes/level.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://dkawfgs4d2x2v" path="res://Scenes/Fruits/strawberry.tscn" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://tyxyb8u2ab00" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cajj7c5jy3enk" path="res://Scenes/ui.tscn" id="2_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://cv12mgfyr1wu0" path="res://Scenes/cauldron.tscn" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://dnwn3i1ofj3i4" path="res://Scenes/Fruits/grapes.tscn" id="5_kry3j"]
-[ext_resource type="PackedScene" uid="uid://cud8jau4hfkei" path="res://Scenes/Fruits/blueberry.tscn" id="6_21xkr"]
-[ext_resource type="PackedScene" uid="uid://cmjwtowrfevk3" path="res://Scenes/fruit_spawn.tscn" id="9_ynf5e"]
 
 [sub_resource type="Environment" id="Environment_344ge"]
 background_mode = 1
@@ -22,44 +17,17 @@ script = ExtResource("1_344ge")
 
 [node name="Ui" parent="." unique_id=1089604113 instance=ExtResource("2_ynf5e")]
 
-[node name="Strawberry" parent="." unique_id=783218628 instance=ExtResource("1_jjvhh")]
-transform = Transform3D(0.80207807, 0.5972192, 0, -0.5972192, 0.80207807, 0, 0, 0, 1, 10.228358, 4.1713576, -8.1882305)
-COLOR = null
-SCORE = null
-FRUIT_NAME = null
-MASS = null
-
 [node name="Level" parent="." unique_id=1568260822 instance=ExtResource("1_jjgbg")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.733078, -0.73427486, 7.201477)
 
 [node name="Player" parent="." unique_id=1612110732 instance=ExtResource("2_bo1nx")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.441492, 1.2930546, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999891, -0.014764949, 0, 0.014764949, 0.999891, -10.026396, 1.2930546, 130.51855)
 collision_layer = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=599809789]
 transform = Transform3D(0.7084507, 0.0087208245, 0.7057064, -0.7057603, 0.008754068, 0.70839655, 0, -0.99992365, 0.012356638, -0.15108109, 20.836702, 0)
 shadow_enabled = true
 
-[node name="Cauldron" parent="." unique_id=943779588 instance=ExtResource("3_8gbba")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0.05201006, 4.072322, 0.19804573)
-
-[node name="Grapes" parent="." unique_id=1333117928 instance=ExtResource("5_kry3j")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.8812208, 2.831935, -12.186027)
-COLOR = null
-SCORE = null
-FRUIT_NAME = null
-MASS = null
-
-[node name="Blueberry" parent="." unique_id=813304657 instance=ExtResource("6_21xkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2, -11)
-COLOR = null
-SCORE = null
-FRUIT_NAME = null
-MASS = null
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1553727087]
 environment = SubResource("Environment_344ge")
-
-[node name="FruitSpawn" parent="." unique_id=250028317 instance=ExtResource("9_ynf5e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.780688, -0.3407477, -2.3165054)
