@@ -92,6 +92,9 @@ func _physics_process(delta: float) -> void:
 		picked_up.apply_central_impulse((throw_dir * THROW_SPEED * picked_up.mass) + (Vector3(velocity.x, 20, velocity.z) * VELOCITY_SCALE * picked_up.mass))
 		picked_up = null
 	elif Input.is_action_just_pressed("pickup") and target:
+		if target.is_in_spawn:
+			signals.danger_increased.emit()
+			
 		target.is_picked_up = true
 		target.is_in_spawn = false
 		picked_up = target
@@ -139,7 +142,6 @@ func get_pickup_point() -> Node3D:
 
 
 func _on_hurtbox_area_entered(area: Area3D) -> void:
-	print(area.name)
 	if (area.name == "Hitbox"):
 		queue_free()
 
