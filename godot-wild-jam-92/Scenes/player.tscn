@@ -24,6 +24,7 @@ platform_floor_layers = 4294967291
 script = ExtResource("1_6t5aa")
 
 [node name="CameraPivot" parent="." unique_id=534410558 instance=ExtResource("1_cvnsp")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="Pivot" type="Node3D" parent="." unique_id=915778554]
 
@@ -38,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 0.043148544, 0.9990687, 0, -0.9990687, 0.043
 shape = SubResource("CapsuleShape3D_6t5aa")
 
 [node name="PickupPoint" type="Node3D" parent="Pivot" unique_id=393226289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71109295, -2.8572574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7547705, -3.588257)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1729149767]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.3606449e-09, -0.03112793)

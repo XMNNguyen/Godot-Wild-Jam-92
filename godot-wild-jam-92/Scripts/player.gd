@@ -18,8 +18,8 @@ extends CharacterBody3D
 @export var DASH_CD : float = 0.8
 
 # THROW VARS
-@export var THROW_SPEED : float = 10000
-@export var VELOCITY_SCALE : float = 1000
+@export var THROW_SPEED : float = 2
+@export var VELOCITY_SCALE : float = 2
 
 var score := 0
 var num_jumps := 2
@@ -88,10 +88,11 @@ func _physics_process(delta: float) -> void:
 	## ITEM PICKUP AND DROP
 	if Input.is_action_just_pressed("pickup") and picked_up:
 		picked_up.is_picked_up = false
-		picked_up.apply_central_impulse((-$Pivot.global_transform.basis.z * THROW_SPEED) + (Vector3(velocity.x, 20, velocity.z) * VELOCITY_SCALE))
+		picked_up.apply_central_impulse((-$Pivot.global_transform.basis.z * THROW_SPEED * picked_up.mass) + (Vector3(velocity.x, 10, velocity.z) * VELOCITY_SCALE * picked_up.mass))
 		picked_up = null
 	elif Input.is_action_just_pressed("pickup") and target:
 		target.is_picked_up = true
+		target.is_in_spawn = false
 		picked_up = target
 	
 	
@@ -144,10 +145,8 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 
 
 func _on_pickup_range_area_entered(area: Area3D) -> void:
-	#print(area.get_parent())
 	if (area.get_parent().is_in_group("fruit")):
 		target = area.get_parent()
-		print(target)
 
 
 func _on_pickup_range_area_exited(area: Area3D) -> void:
