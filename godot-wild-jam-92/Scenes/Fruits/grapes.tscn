@@ -7,13 +7,14 @@
 radius = 0.34326172
 height = 0.79003906
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_4vh2g"]
+radius = 1.0
+
 [node name="Grapes" type="RigidBody3D" unique_id=1333117928]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_4vh2g")
-COLOR = Color(0, 1, 0, 1)
-FRUIT_NAME = "grapes"
 metadata/_custom_type_script = "uid://qx3v4sr31i0s"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1777339117]
@@ -21,3 +22,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25961244, 0)
 shape = SubResource("CapsuleShape3D_c1k7w")
 
 [node name="Grapes" parent="." unique_id=1348003084 instance=ExtResource("2_drh6v")]
+
+[node name="Pickup_Radius" type="Area3D" parent="." unique_id=841113134]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup_Radius" unique_id=36043355]
+shape = SubResource("SphereShape3D_4vh2g")

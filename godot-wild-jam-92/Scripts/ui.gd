@@ -17,7 +17,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if tick_timer.is_stopped():
 		fuel -= 1
-		print(fuel)
 		set_tick()
 	
 	if fuel <= 0:

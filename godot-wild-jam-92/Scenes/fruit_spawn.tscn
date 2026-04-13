@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cmjwtowrfevk3"]
+
+[ext_resource type="Script" uid="uid://bux3sv6fls1oi" path="res://Scripts/fruit_spawn.gd" id="1_amn31"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x2vna"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.2
+
+[node name="FruitSpawn" type="StaticBody3D" unique_id=250028317]
+script = ExtResource("1_amn31")
+FRUIT_TYPES = Array[String](["res://Scenes/Fruits/strawberry.tscn", "res://Scenes/Fruits/grapes.tscn", "res://Scenes/Fruits/blueberry.tscn"])
+
+[node name="Platform" type="MeshInstance3D" parent="." unique_id=1554280486]
+mesh = SubResource("CylinderMesh_x2vna")
+
+[node name="SpawnPoint" type="Node3D" parent="." unique_id=894685856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8024616, 0)

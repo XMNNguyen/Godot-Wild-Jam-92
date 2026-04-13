@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 # MOVEMENT VARS
@@ -30,6 +31,7 @@ var picked_up : Fruit = null
 
 
 func _ready() -> void:
+	add_to_group("player")
 	PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY, GRAVITY)
 	
 
@@ -137,11 +139,13 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 		$"../UI/RetryButton".show()
 
 
-func _on_pickup_range_body_entered(body: Node3D) -> void:
-	if (body.is_in_group("fruit")):
-		target = body
+func _on_pickup_range_area_entered(area: Area3D) -> void:
+	#print(area.get_parent())
+	if (area.get_parent().is_in_group("fruit")):
+		target = area.get_parent()
+		print(target)
 
 
-func _on_pickup_range_body_exited(body: Node3D) -> void:
-	if (body.is_in_group("fruit")):
+func _on_pickup_range_area_exited(area: Area3D) -> void:
+	if (area.get_parent().is_in_group("fruit")):
 		target = null

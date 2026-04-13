@@ -8,15 +8,21 @@ bounce = 0.64
 absorbent = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5eixl"]
-radius = 2.0656762
+radius = 1.0
 
 [node name="Fruit" type="RigidBody3D" unique_id=1471115776 groups=["fruit"]]
 collision_layer = 4
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_5eixl")
 script = ExtResource("1_5eixl")
+COLOR = null
+SCORE = null
+FRUIT_NAME = null
+MASS = null
 
 [node name="Pickup_Radius" type="Area3D" parent="." unique_id=648181410]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup_Radius" unique_id=1406847522]
 shape = SubResource("SphereShape3D_5eixl")

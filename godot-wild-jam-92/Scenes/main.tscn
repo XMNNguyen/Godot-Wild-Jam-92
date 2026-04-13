@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://cv12mgfyr1wu0" path="res://Scenes/cauldron.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://dnwn3i1ofj3i4" path="res://Scenes/Fruits/grapes.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://cud8jau4hfkei" path="res://Scenes/Fruits/blueberry.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://cmjwtowrfevk3" path="res://Scenes/fruit_spawn.tscn" id="9_ynf5e"]
 
 [sub_resource type="Environment" id="Environment_344ge"]
 background_mode = 1
-background_color = Color(0.7085486, 0.78074616, 1, 1)
+background_color = Color(0.7587703, 0.8231315, 0.99668103, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
 reflected_light_source = 1
@@ -23,6 +24,10 @@ script = ExtResource("1_344ge")
 
 [node name="Strawberry" parent="." unique_id=783218628 instance=ExtResource("1_jjvhh")]
 transform = Transform3D(0.80207807, 0.5972192, 0, -0.5972192, 0.80207807, 0, 0, 0, 1, 10.228358, 4.1713576, -8.1882305)
+COLOR = null
+SCORE = null
+FRUIT_NAME = null
+MASS = null
 
 [node name="Level" parent="." unique_id=1568260822 instance=ExtResource("1_jjgbg")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.733078, -0.73427486, 7.201477)
@@ -41,9 +46,20 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0.05201006, 4.072322, 0.19804
 
 [node name="Grapes" parent="." unique_id=1333117928 instance=ExtResource("5_kry3j")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.8812208, 2.831935, -12.186027)
+COLOR = null
+SCORE = null
+FRUIT_NAME = null
+MASS = null
 
 [node name="Blueberry" parent="." unique_id=813304657 instance=ExtResource("6_21xkr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2, -11)
+COLOR = null
+SCORE = null
+FRUIT_NAME = null
+MASS = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1553727087]
 environment = SubResource("Environment_344ge")
+
+[node name="FruitSpawn" parent="." unique_id=250028317 instance=ExtResource("9_ynf5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.780688, -0.3407477, -2.3165054)
