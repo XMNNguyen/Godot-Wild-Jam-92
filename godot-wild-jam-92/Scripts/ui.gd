@@ -3,13 +3,13 @@ extends Control
 
 @export var MAX_FUEL : int = 100
 @export var MAX_DANGER : int = 50
-@export var SPAWN_DISTANCE : float = 60
+@export var SPAWN_DISTANCE : float = 15
 
 @onready var player = %Player
 @onready var enemy_path = "res://Scenes/enemy.tscn"
 
 var fuel : int = MAX_FUEL
-var danger_level : int = 1
+var danger_level : int = 50
 
 # TIMERS
 var tick_time : float = 5.0
@@ -57,13 +57,13 @@ func increase_danger() -> void:
 
 
 func spawn_enemies(amount : int = 1) -> void:
-	print(amount)
 	for i in range(amount):
 		var direction = Vector3(randf_range(-1, 1), 
 								randf_range(0, 1), 
-								randf_range(0, -1)).normalized()
+								randf_range(-1, 1)).normalized()
 		
 		var enemy_instance = load(enemy_path).instantiate()
+		var spawn_distance = randf_range(SPAWN_DISTANCE, SPAWN_DISTANCE + (danger_level / 2))
 		enemy_instance.global_position = player.position + (direction * SPAWN_DISTANCE)
 		
 		get_tree().current_scene.add_child(enemy_instance)

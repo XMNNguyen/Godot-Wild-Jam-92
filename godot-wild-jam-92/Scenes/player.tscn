@@ -16,6 +16,9 @@ height = 2.0617676
 height = 0.9020996
 radius = 0.7895508
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_6t5aa"]
+radius = 0.6749164
+
 [node name="Player" type="CharacterBody3D" unique_id=1612110732 groups=["player"]]
 collision_layer = 2
 collision_mask = 7
@@ -60,7 +63,7 @@ collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=2039139978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07228696, 0)
-shape = SubResource("CylinderShape3D_fvtld")
+shape = SubResource("SphereShape3D_6t5aa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1736665879]
 

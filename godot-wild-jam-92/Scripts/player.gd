@@ -43,17 +43,9 @@ func _physics_process(delta: float) -> void:
 	## JUMP
 	# player cant be hurt in air and can only kill in air
 	if Input.is_action_just_pressed("jump") and num_jumps < 2 and not dashing:
-		$Hitbox.monitoring = true
-		$Hitbox.monitorable = true
-		$Hurtbox.monitoring = false
-		$Hurtbox.monitorable = false
 		velocity.y = JUMP_VELOCITY
 		num_jumps += 1
 	elif is_on_floor():
-		$Hitbox.monitoring = false
-		$Hitbox.monitorable = false
-		$Hurtbox.monitoring = true
-		$Hurtbox.monitorable = true
 		num_jumps = 0
 
 	
