@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bymv4u4xnm543" path="res://Scenes/level.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://tyxyb8u2ab00" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cajj7c5jy3enk" path="res://Scenes/ui.tscn" id="2_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://0wjqjdlyqp5g" path="res://Scenes/enemy.tscn" id="5_kry3j"]
 
 [sub_resource type="Environment" id="Environment_344ge"]
 background_mode = 1
@@ -31,3 +32,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1553727087]
 environment = SubResource("Environment_344ge")
+
+[node name="Enemy" parent="." unique_id=848570606 instance=ExtResource("5_kry3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.242762, 18.664406, 121.382614)

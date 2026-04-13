@@ -88,7 +88,8 @@ func _physics_process(delta: float) -> void:
 	## ITEM PICKUP AND DROP
 	if Input.is_action_just_pressed("pickup") and picked_up:
 		picked_up.is_picked_up = false
-		picked_up.apply_central_impulse((-$Pivot.global_transform.basis.z * THROW_SPEED * picked_up.mass) + (Vector3(velocity.x, 10, velocity.z) * VELOCITY_SCALE * picked_up.mass))
+		var throw_dir = Vector3(-$Pivot.global_transform.basis.z.x, 0, -$Pivot.global_transform.basis.z.z)
+		picked_up.apply_central_impulse((throw_dir * THROW_SPEED * picked_up.mass) + (Vector3(velocity.x, 20, velocity.z) * VELOCITY_SCALE * picked_up.mass))
 		picked_up = null
 	elif Input.is_action_just_pressed("pickup") and target:
 		target.is_picked_up = true
@@ -138,10 +139,9 @@ func get_pickup_point() -> Node3D:
 
 
 func _on_hurtbox_area_entered(area: Area3D) -> void:
+	print(area.name)
 	if (area.name == "Hitbox"):
-		$"../SpawnTimer".stop()
 		queue_free()
-		$"../UI/RetryButton".show()
 
 
 func _on_pickup_range_area_entered(area: Area3D) -> void:

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://0wjqjdlyqp5g"]
+
+[ext_resource type="Script" uid="uid://cptapr6qbr4p6" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="PackedScene" uid="uid://bkk46t74ias60" path="res://Art+Sprites/Enemies/Enemy_cat_angry.glb" id="2_afpow"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_287tu"]
+radius = 0.8249054
+
+[node name="Enemy" type="CharacterBody3D" unique_id=848570606]
+script = ExtResource("1_1f0kj")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1031079750]
+
+[node name="Enemy_cat_angry" parent="Pivot" unique_id=2102829220 instance=ExtResource("2_afpow")]
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=506810105]
+collision_layer = 10
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=719828909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023106456, 0)
+shape = SubResource("SphereShape3D_287tu")
+
+[node name="TimeToLive" type="Timer" parent="." unique_id=947239843]
+
+[connection signal="timeout" from="TimeToLive" to="." method="_on_time_to_live_timeout"]
