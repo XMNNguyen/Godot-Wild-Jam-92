@@ -25,6 +25,18 @@ collision_mask = 7
 platform_on_leave = 2
 platform_floor_layers = 4294967291
 script = ExtResource("1_6t5aa")
+SPEED = null
+JUMP_VELOCITY = null
+GRAVITY = null
+ACCELERATION = null
+SLOW_DOWN = null
+PUSH_FORCE = null
+CAMERA_ZOOM_RATIO = null
+DASH_SPEED = null
+DASH_DURATION = null
+DASH_CD = null
+THROW_SPEED = null
+VELOCITY_SCALE = null
 
 [node name="CameraPivot" parent="." unique_id=534410558 instance=ExtResource("1_cvnsp")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)

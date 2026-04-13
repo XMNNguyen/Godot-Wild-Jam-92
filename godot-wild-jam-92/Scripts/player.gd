@@ -106,7 +106,10 @@ func _physics_process(delta: float) -> void:
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody3D:
 			c.get_collider().apply_central_impulse(-c.get_normal() * PUSH_FORCE)
-		
+	
+	if global_position.length() > Main.WORLD_RADIUS:
+		global_position = global_position.normalized() * Main.WORLD_RADIUS
+	
 	move_and_slide()
 
 
@@ -135,7 +138,7 @@ func get_pickup_point() -> Node3D:
 
 func _on_hurtbox_area_entered(area: Area3D) -> void:
 	if (area.name == "Hitbox"):
-		queue_free()
+		signals.player_hit.emit()
 
 
 func _on_pickup_range_area_entered(area: Area3D) -> void:

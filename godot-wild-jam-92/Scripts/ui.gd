@@ -3,13 +3,15 @@ extends Control
 
 @export var MAX_FUEL : int = 100
 @export var MAX_DANGER : int = 50
+@export var MAX_LIFE : int = 3
 @export var SPAWN_DISTANCE : float = 15
 
 @onready var player = %Player
 @onready var enemy_path = "res://Scenes/enemy.tscn"
 
 var fuel : int = MAX_FUEL
-var danger_level : int = 50
+var danger_level : int = 1
+var player_life : int = MAX_LIFE
 
 # TIMERS
 var tick_time : float = 5.0
@@ -20,6 +22,7 @@ var spawn_timer : Timer = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	signals.player_hit.connect(player_hit)
 	signals.danger_increased.connect(increase_danger)
 	signals.fruit_collected.connect(add_fuel)
 	set_tick()
@@ -76,3 +79,10 @@ func set_spawn_timer() -> void:
 	spawn_timer.one_shot = true
 	add_child(spawn_timer)
 	spawn_timer.start(spawn_time - floor(danger_level / 2))
+
+
+func player_hit() -> void:
+	player_life -= 1
+	print(player_life)
+	if player_life <= 0:
+		player.position = $"../Cauldron".global_position + Vector3(0, 10, 0)

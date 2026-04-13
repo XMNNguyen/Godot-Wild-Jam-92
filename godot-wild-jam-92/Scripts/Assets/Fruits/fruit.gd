@@ -36,3 +36,6 @@ func _process(delta: float) -> void:
 		global_position = lerp(global_position, player.get_pickup_point().global_position, 1.0)
 	else:
 		$CollisionShape3D.disabled = false 
+	
+	if not is_picked_up and global_position.length() > Main.WORLD_RADIUS:
+		global_position = global_position.normalized() * Main.WORLD_RADIUS

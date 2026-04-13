@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bymv4u4xnm543" path="res://Scenes/level.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://tyxyb8u2ab00" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cajj7c5jy3enk" path="res://Scenes/ui.tscn" id="2_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://cv12mgfyr1wu0" path="res://Scenes/cauldron.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://0wjqjdlyqp5g" path="res://Scenes/enemy.tscn" id="5_kry3j"]
 
 [sub_resource type="Environment" id="Environment_344ge"]
@@ -23,7 +24,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.733078, -0.73427486, 7.201
 
 [node name="Player" parent="." unique_id=1612110732 instance=ExtResource("2_bo1nx")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.999891, -0.014764949, 0, 0.014764949, 0.999891, -10.026396, 1.2930546, 130.51855)
+transform = Transform3D(1, 0, 0, 0, 0.999891, -0.014764949, 0, 0.014764949, 0.999891, -8.099133, 0.745203, 129.25946)
 collision_layer = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=599809789]
@@ -35,3 +36,6 @@ environment = SubResource("Environment_344ge")
 
 [node name="Enemy" parent="." unique_id=848570606 instance=ExtResource("5_kry3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.242762, 18.664406, 121.382614)
+
+[node name="Cauldron" parent="." unique_id=943779588 instance=ExtResource("3_8gbba")]
+transform = Transform3D(6, 0, 0, 0, 5.999975, 0.01727874, 0, -0.01727874, 5.999975, -1.529277, 2.4121556, 117.63876)

@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bymv4u4xnm543"]
 
-[ext_resource type="PackedScene" uid="uid://cv12mgfyr1wu0" path="res://Scenes/cauldron.tscn" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://cmjwtowrfevk3" path="res://Scenes/fruit_spawn.tscn" id="2_k5f4k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_51e2h"]
@@ -55,6 +54,9 @@ radius = 3.9560547
 height = 4.7558594
 radius = 13.444824
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_tumq0"]
+plane = Plane(210.8, 1, 0, 34)
+
 [node name="Level" type="Node3D" unique_id=1568260822]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1170763996]
@@ -67,9 +69,6 @@ mesh = SubResource("CylinderMesh_tumq0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1377540485]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00109, 0)
 shape = SubResource("CylinderShape3D_51e2h")
-
-[node name="Cauldron" parent="." unique_id=943779588 instance=ExtResource("1_tumq0")]
-transform = Transform3D(1.1999999, 0, 0, 0, 1.1999949, 0.0034557479, 0, -0.0034557479, 1.1999949, -1.529277, 0.9613194, 21.540941)
 
 [node name="Hill" type="StaticBody3D" parent="." unique_id=1258597138]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2641926, -1.0553846, 0)
@@ -177,3 +176,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.798738, -24.627853
 
 [node name="FruitSpawn7" parent="Spawners" unique_id=433106565 instance=ExtResource("2_k5f4k")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.8877573, 0.077599764, 17.806637)
+
+[node name="Boundery" type="CollisionShape3D" parent="." unique_id=2047944521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.266138, -29.588818)
+shape = SubResource("WorldBoundaryShape3D_tumq0")
