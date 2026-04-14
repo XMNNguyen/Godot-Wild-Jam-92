@@ -22,7 +22,8 @@ signals="*uid://c4ijq67ka5wok"
 [display]
 
 window/size/viewport_width=640
-window/size/mode=2
+window/size/viewport_height=480
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [global_group]

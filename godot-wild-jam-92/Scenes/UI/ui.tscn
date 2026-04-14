@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cajj7c5jy3enk"]
+
+[ext_resource type="Script" uid="uid://cnefbraawxpbs" path="res://Scripts/ui.gd" id="1_jxero"]
+[ext_resource type="Script" uid="uid://bc2gnxkxf8tt5" path="res://Scripts/hearts.gd" id="2_de23q"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c7mb3"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Theme" id="Theme_fo61o"]
+
+[node name="Ui" type="Control" unique_id=80012431]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jxero")
+
+[node name="Fuel" type="ProgressBar" parent="." unique_id=1495346369]
+modulate = Color(0.92147547, 0.70827705, 1, 1)
+material = SubResource("CanvasItemMaterial_c7mb3")
+layout_mode = 0
+offset_left = 119.0
+offset_top = 416.0
+offset_right = 514.0
+offset_bottom = 456.0
+theme = SubResource("Theme_fo61o")
+page = 0.03
+value = 99.97
+rounded = true
+fill_mode = 1
+show_percentage = false
+
+[node name="DangerBar" type="ProgressBar" parent="." unique_id=958902918]
+modulate = Color(0.6872149, 0.68721503, 0.6872149, 1)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 200.0
+offset_right = 50.0
+offset_bottom = 348.0
+max_value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Heart_Bar" type="CanvasLayer" parent="." unique_id=1105163091]
+
+[node name="Hearts" type="HBoxContainer" parent="Heart_Bar" unique_id=201337799]
+offset_right = 156.0
+offset_bottom = 40.0
+script = ExtResource("2_de23q")

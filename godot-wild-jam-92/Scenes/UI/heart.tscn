@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c7nvt3qmx2g6w"]
+
+[ext_resource type="Texture2D" uid="uid://c4k1f5t5j3jqt" path="res://icon.svg" id="1_3r3sn"]
+
+[node name="Heart" type="TextureRect" unique_id=534464536]
+custom_minimum_size = Vector2(140, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1837335000]
+position = Vector2(65, 65)
+texture = ExtResource("1_3r3sn")

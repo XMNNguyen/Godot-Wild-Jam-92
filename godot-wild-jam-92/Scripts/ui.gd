@@ -96,7 +96,6 @@ func set_spawn_timer() -> void:
 
 func player_hit() -> void:
 	player_life -= 1
-	print(player_life)
 	if player_life <= 0:
 		player.position = $"../Cauldron".global_position + Vector3(0, 10, 0)
 		player.recovering = true
