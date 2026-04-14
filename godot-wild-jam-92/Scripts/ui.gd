@@ -18,6 +18,8 @@ var tick_time : float = 5.0
 var tick_timer : Timer = null
 var spawn_time : float = 10.0
 var spawn_timer : Timer = null
+var recovery_time : float = 3.0
+var recovery_timer : Timer = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -37,6 +39,17 @@ func _process(delta: float) -> void:
 	if spawn_timer and spawn_timer.is_stopped():
 		var num_enemies = max(1, danger_level / 5)
 		spawn_enemies(num_enemies)
+	
+	if player.recovering and recovery_timer and recovery_timer.is_stopped():
+		player_life += 1
+		print(player_life)
+		#TODO: set up ui to show this
+		
+		if player_life >= MAX_LIFE:
+			player.recovering = false
+		else:
+			set_recovery_timer()
+	
 	
 	if fuel <= 0:
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
@@ -86,3 +99,12 @@ func player_hit() -> void:
 	print(player_life)
 	if player_life <= 0:
 		player.position = $"../Cauldron".global_position + Vector3(0, 10, 0)
+		player.recovering = true
+		set_recovery_timer()
+
+
+func set_recovery_timer() -> void:
+	recovery_timer = Timer.new()
+	recovery_timer.one_shot = true
+	add_child(recovery_timer)
+	recovery_timer.start(recovery_time)

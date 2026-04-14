@@ -21,11 +21,21 @@ extends CharacterBody3D
 @export var THROW_SPEED : float = 2
 @export var VELOCITY_SCALE : float = 2
 
+# TIMERS
+@export var STUN_TIME : float = 1.5
+@export var INVINCIBILITY_TIME : float = 2.5
+
+var stun_timer : Timer = null
+var invincibility_timer : Timer = null
+
 var score := 0
 var num_jumps := 2
 var speed = 0
+
 var can_dash = true
 var dashing = false
+var recovering = false
+
 var target : Fruit = null
 var picked_up : Fruit = null
 
@@ -39,10 +49,13 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
+	if recovering:
+		$Pivot.rotate(Vector3(0, 1, 0), 0.1)
+	
 	## JUMP
 	# player cant be hurt in air and can only kill in air
-	if Input.is_action_just_pressed("jump") and num_jumps < 2 and not dashing:
+	if not recovering and is_not_stunned() and Input.is_action_just_pressed("jump") and num_jumps < 2 and not dashing:
 		velocity.y = JUMP_VELOCITY
 		num_jumps += 1
 	elif is_on_floor():
@@ -57,7 +70,7 @@ func _physics_process(delta: float) -> void:
 	if dashing:
 		velocity = relativeDir * SPEED * DASH_SPEED
 		velocity.y = 0
-	elif relativeDir:
+	elif relativeDir and is_not_stunned() and not recovering:
 		speed = move_toward(speed, SPEED, ACCELERATION * delta)
 
 		velocity.x = relativeDir.x * speed
@@ -74,16 +87,17 @@ func _physics_process(delta: float) -> void:
 		var slow_down = speed + SLOW_DOWN
 		velocity.x = move_toward(velocity.x, 0, slow_down * delta)
 		velocity.z = move_toward(velocity.z, 0, slow_down * delta)
+		
 	if velocity == Vector3(0, 0, 0):
 		speed = 0
 	
 	## ITEM PICKUP AND DROP
-	if Input.is_action_just_pressed("pickup") and picked_up:
+	if not recovering and is_not_stunned() and Input.is_action_just_pressed("pickup") and picked_up:
 		picked_up.is_picked_up = false
 		var throw_dir = Vector3(-$Pivot.global_transform.basis.z.x, 0, -$Pivot.global_transform.basis.z.z)
 		picked_up.apply_central_impulse((throw_dir * THROW_SPEED * picked_up.mass) + (Vector3(velocity.x, 20, velocity.z) * VELOCITY_SCALE * picked_up.mass))
 		picked_up = null
-	elif Input.is_action_just_pressed("pickup") and target:
+	elif not recovering and is_not_stunned() and Input.is_action_just_pressed("pickup") and target:
 		if target.is_in_spawn:
 			signals.danger_increased.emit()
 			
@@ -137,8 +151,10 @@ func get_pickup_point() -> Node3D:
 
 
 func _on_hurtbox_area_entered(area: Area3D) -> void:
-	if (area.name == "Hitbox"):
+	if (area.name == "Hitbox") and is_not_invincible() and not recovering:
 		signals.player_hit.emit()
+		set_invincibility_time()
+		set_stun_time()
 
 
 func _on_pickup_range_area_entered(area: Area3D) -> void:
@@ -149,3 +165,31 @@ func _on_pickup_range_area_entered(area: Area3D) -> void:
 func _on_pickup_range_area_exited(area: Area3D) -> void:
 	if (area.get_parent().is_in_group("fruit")):
 		target = null
+
+
+func set_stun_time() -> void:
+	stun_timer = Timer.new()
+	stun_timer.one_shot = true
+	add_child(stun_timer)
+	stun_timer.start(STUN_TIME)
+
+
+func set_invincibility_time() -> void:
+	invincibility_timer = Timer.new()
+	invincibility_timer.one_shot = true
+	add_child(invincibility_timer)
+	invincibility_timer.start(INVINCIBILITY_TIME)
+
+
+func is_not_stunned() -> bool:
+	if not stun_timer:
+		return true
+	
+	return stun_timer.is_stopped()
+
+
+func is_not_invincible() -> bool:
+	if not invincibility_timer:
+		return true 
+		
+	return invincibility_timer.is_stopped()
