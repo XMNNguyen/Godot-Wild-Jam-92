@@ -16,7 +16,8 @@ func _ready() -> void:
 
 
 func lose_health() -> void:
-	get_children().remove_at(0)
+	remove_child(get_children().get(0))
+	
 
 
 func gain_health() -> void:

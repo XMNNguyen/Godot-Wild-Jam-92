@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://csbyysnt1jafe" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bipg8rmp0ecga" path="res://Scenes/PlayerCamera.tscn" id="1_cvnsp"]
-[ext_resource type="PackedScene" uid="uid://bxq30sbj5wnfq" path="res://Art+Sprites/Wizard_Cat.glb" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://bbebg4mj0aq7s" path="res://Scenes/Sprites/wizard_cat.tscn" id="3_6t5aa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t5aa"]
 radius = 1.8476563
@@ -31,7 +31,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="Pivot" type="Node3D" parent="." unique_id=915778554]
 
-[node name="Wizard_Cat" parent="Pivot" unique_id=1592886883 instance=ExtResource("3_6t5aa")]
+[node name="Wizard_Cat" parent="Pivot" unique_id=1082039462 instance=ExtResource("3_6t5aa")]
 
 [node name="Pickup_Range" type="Area3D" parent="Pivot" unique_id=275918943]
 collision_layer = 4
@@ -64,8 +64,6 @@ collision_mask = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=2039139978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07228696, 0)
 shape = SubResource("SphereShape3D_6t5aa")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1736665879]
 
 [connection signal="area_entered" from="Pivot/Pickup_Range" to="." method="_on_pickup_range_area_entered"]
 [connection signal="area_exited" from="Pivot/Pickup_Range" to="." method="_on_pickup_range_area_exited"]

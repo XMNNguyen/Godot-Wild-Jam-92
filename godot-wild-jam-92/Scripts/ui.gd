@@ -7,6 +7,9 @@ extends Control
 @export var SPAWN_DISTANCE : float = 15
 
 @onready var player = %Player
+@onready var hearts = $Heart_Bar/Hearts
+@onready var danger_bar = $DangerBar
+@onready var fuel_bar = $FuelBar
 @onready var enemy_path = "res://Scenes/enemy.tscn"
 
 var fuel : int = MAX_FUEL
@@ -34,6 +37,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if tick_timer and tick_timer.is_stopped():
 		fuel -= 1
+		fuel_bar.value = fuel
 		set_tick()
 	
 	if spawn_timer and spawn_timer.is_stopped():
@@ -42,8 +46,7 @@ func _process(delta: float) -> void:
 	
 	if player.recovering and recovery_timer and recovery_timer.is_stopped():
 		player_life += 1
-		print(player_life)
-		#TODO: set up ui to show this
+		hearts.gain_health()
 		
 		if player_life >= MAX_LIFE:
 			player.recovering = false
@@ -64,11 +67,13 @@ func set_tick() -> void:
 
 func add_fuel(fuel_amount : float) -> void:
 	fuel = min(fuel + fuel_amount, MAX_FUEL)
+	fuel_bar.value = fuel
 
 
 func increase_danger() -> void:
 	danger_level += 1
 	var num_enemies = max(1, danger_level / 5)
+	danger_bar.value = danger_level
 	spawn_enemies(num_enemies)
 
 
@@ -96,6 +101,7 @@ func set_spawn_timer() -> void:
 
 func player_hit() -> void:
 	player_life -= 1
+	hearts.lose_health()
 	if player_life <= 0:
 		player.position = $"../Cauldron".global_position + Vector3(0, 10, 0)
 		player.recovering = true

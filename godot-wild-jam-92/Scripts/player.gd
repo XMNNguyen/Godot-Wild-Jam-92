@@ -68,10 +68,12 @@ func _physics_process(delta: float) -> void:
 	## MOVE AND DASH
 	# handle horizontal movement commands
 	if dashing:
+		$CameraPivot/SpringArm3D.spring_length = lerp($CameraPivot/SpringArm3D.spring_length, 25.0, 0.25)
 		velocity = relativeDir * SPEED * DASH_SPEED
 		velocity.y = 0
 	elif relativeDir and is_not_stunned() and not recovering:
 		speed = move_toward(speed, SPEED, ACCELERATION * delta)
+		$CameraPivot/SpringArm3D.spring_length = lerp($CameraPivot/SpringArm3D.spring_length, 20.0, 0.25)
 
 		velocity.x = relativeDir.x * speed
 		velocity.z = relativeDir.z * speed

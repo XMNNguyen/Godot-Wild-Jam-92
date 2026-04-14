@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jxero")
 
-[node name="Fuel" type="ProgressBar" parent="." unique_id=1495346369]
+[node name="FuelBar" type="ProgressBar" parent="." unique_id=1495346369]
 modulate = Color(0.92147547, 0.70827705, 1, 1)
 material = SubResource("CanvasItemMaterial_c7mb3")
 layout_mode = 0
