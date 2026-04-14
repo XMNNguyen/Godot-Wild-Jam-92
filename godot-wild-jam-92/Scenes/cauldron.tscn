@@ -28,4 +28,6 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4044543, 0)
 shape = SubResource("CylinderShape3D_r1an6")
 
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=399673293]
+
 [connection signal="body_entered" from="Pot_Insert" to="." method="_on_pot_insert_body_entered"]

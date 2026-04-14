@@ -48,10 +48,13 @@ var keys = [
 
 @onready var sprite_tree = $Pivot/Wizard_Cat/AnimationTree
 @onready var state_machine = sprite_tree["parameters/playback"]
+@onready var smoke_particles = null
 
 func _ready() -> void:
 	add_to_group("player")
 	PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY, GRAVITY)
+	
+	$StunParticles.play("idle")
 	
 
 func _physics_process(delta: float) -> void:
@@ -59,6 +62,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
+	# display stun particles if stunned
+	$StunParticles.visible = true if not is_not_stunned() else false
+	
+	## RECOVERY STATE
 	if recovering or not is_not_invincible():
 		state = INVINCIBLE
 		
@@ -74,13 +81,11 @@ func _physics_process(delta: float) -> void:
 		num_jumps += 1
 	elif is_on_floor():
 		num_jumps = 0
-
-	
-	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var relativeDir := Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, $CameraPivot/SpringArm3D.rotation.y)
 	
 	## MOVE AND DASH
 	# handle horizontal movement commands
+	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var relativeDir := Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, $CameraPivot/SpringArm3D.rotation.y)
 	if dashing:
 		$CameraPivot/SpringArm3D.spring_length = lerp($CameraPivot/SpringArm3D.spring_length, 25.0, 0.25)
 		velocity = relativeDir * SPEED * DASH_SPEED
@@ -171,7 +176,8 @@ func get_pickup_point() -> Node3D:
 func _on_hurtbox_area_entered(area: Area3D) -> void:
 	if (area.name == "Hitbox") and is_not_invincible() and not recovering:
 		signals.player_hit.emit()
-		#state_machine.travel("invincible")
+		signals.shake_camera.emit()
+		signals.slow_time.emit(0.2)
 		set_invincibility_time()
 		set_stun_time()
 

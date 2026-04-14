@@ -91,59 +91,16 @@ cull_mode = 1
 albedo_color = Color(1, 1, 1, 0.5176471)
 albedo_texture = ExtResource("2_1d7dc")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cq4um"]
-transparency = 1
-cull_mode = 1
-albedo_texture = ExtResource("2_1d7dc")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwfry"]
-transparency = 1
-cull_mode = 1
-albedo_color = Color(1, 1, 1, 0.5176471)
-albedo_texture = ExtResource("2_1d7dc")
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_045mb"]
-load_path = "res://.godot/imported/Wizard_Cat_Cat.png-52f7ab04d53bd9e2606a276f2e09ad8c.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1y8pe"]
-transparency = 1
-cull_mode = 1
-albedo_texture = SubResource("CompressedTexture2D_045mb")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rp7m3"]
 transparency = 1
 cull_mode = 1
 albedo_color = Color(1, 1, 1, 0.5176471)
 albedo_texture = ExtResource("3_fun3h")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sk1sl"]
-transparency = 1
-albedo_texture = ExtResource("3_fun3h")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i86ej"]
-transparency = 1
-cull_mode = 1
-albedo_color = Color(1, 1, 1, 0.5176471)
-albedo_texture = ExtResource("3_fun3h")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1psjt"]
-transparency = 1
-cull_mode = 1
-albedo_texture = ExtResource("3_fun3h")
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fun3h"]
-load_path = "res://.godot/imported/Wizard_Cat_Hat_Color.png-42f8d3a7c5afb841e0350bd4c3796db6.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x01ak"]
-transparency = 1
-cull_mode = 1
-albedo_color = Color(1, 1, 1, 0.5176471)
-albedo_texture = SubResource("CompressedTexture2D_fun3h")
-albedo_texture_force_srgb = true
-
 [sub_resource type="Animation" id="Animation_qgqr6"]
 resource_name = "invincible"
-length = 3.0
+length = 0.3
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -151,10 +108,10 @@ tracks/0/path = NodePath("Icosphere_002:material_override")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.46666667, 0.96666664, 1.5, 1.9333333, 2.4666667, 3),
-"transitions": PackedFloat32Array(2.2973974, 2.0705302, 0.19614616, 0.21763763, 0.26794344, 0.29730198, 1),
+"times": PackedFloat32Array(0, 0.13333336),
+"transitions": PackedFloat32Array(2.2973974, 2.0705302),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_nq50e"), SubResource("StandardMaterial3D_fadu8"), SubResource("StandardMaterial3D_cq4um"), SubResource("StandardMaterial3D_uwfry"), SubResource("StandardMaterial3D_1y8pe"), SubResource("StandardMaterial3D_r2v2c"), null]
+"values": [SubResource("StandardMaterial3D_nq50e"), SubResource("StandardMaterial3D_fadu8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -163,10 +120,10 @@ tracks/1/path = NodePath("Icosphere_002/Cylinder:material_override")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.9666667, 1.4666667, 1.9, 2.4333334, 3),
-"transitions": PackedFloat32Array(2.2973974, 2.0705302, 0.19614616, 0.21763763, 0.26794344, 0.29730198, 1),
+"times": PackedFloat32Array(0, 0.13333333),
+"transitions": PackedFloat32Array(2.2973974, 2.0705302),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_045mb"), SubResource("StandardMaterial3D_rp7m3"), SubResource("StandardMaterial3D_sk1sl"), SubResource("StandardMaterial3D_i86ej"), SubResource("StandardMaterial3D_1psjt"), SubResource("StandardMaterial3D_x01ak"), null]
+"values": [SubResource("StandardMaterial3D_045mb"), SubResource("StandardMaterial3D_rp7m3")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_umo1i"]
@@ -182,8 +139,6 @@ animation = &"RESET"
 animation = &"invincible"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nq50e"]
-switch_mode = 2
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fun3h"]
 advance_mode = 2
