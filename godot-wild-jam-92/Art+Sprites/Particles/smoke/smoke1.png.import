@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkno83k31gxft"
-path.s3tc="res://.godot/imported/stun.png-f22e5802a93b83ae524f378b5edb5402.s3tc.ctex"
+uid="uid://buy8i2ynf45ru"
+path.s3tc="res://.godot/imported/smoke1.png-16c3df773bc90e275abb580e2be6264c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art+Sprites/Particles/stun.png"
-dest_files=["res://.godot/imported/stun.png-f22e5802a93b83ae524f378b5edb5402.s3tc.ctex"]
+source_file="res://Art+Sprites/Particles/smoke/smoke1.png"
+dest_files=["res://.godot/imported/smoke1.png-16c3df773bc90e275abb580e2be6264c.s3tc.ctex"]
 
 [params]
 

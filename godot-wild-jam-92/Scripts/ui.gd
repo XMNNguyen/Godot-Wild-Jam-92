@@ -21,9 +21,10 @@ var tick_time : float = 5.0
 var tick_timer : Timer = null
 var spawn_time : float = 10.0
 var spawn_timer : Timer = null
-var recovery_time : float = 3.0
+var recovery_time_left : float = 10
+var recovery_time_left_timer : Timer = null
+var recovery_time : float = recovery_time_left / MAX_LIFE
 var recovery_timer : Timer = null
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,6 +36,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if recovery_time_left_timer and not recovery_time_left_timer.is_stopped():
+		print("RESPAWN:\n" + str(floor(recovery_time_left_timer.time_left)))
+		$TimerDisplay.text = "RESPAWN:\n" + str(int(ceil(recovery_time_left_timer.time_left)))
+	
 	if tick_timer and tick_timer.is_stopped():
 		fuel -= 1
 		fuel_bar.value = fuel
@@ -50,9 +55,9 @@ func _process(delta: float) -> void:
 		
 		if player_life >= MAX_LIFE:
 			player.recovering = false
+			$TimerDisplay.visible = false
 		else:
 			set_recovery_timer()
-	
 	
 	if fuel <= 0:
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
@@ -106,6 +111,8 @@ func player_hit() -> void:
 		player.position = $"../Cauldron".global_position + Vector3(0, 10, 0)
 		player.recovering = true
 		set_recovery_timer()
+		set_recovery_time_left()
+		
 
 
 func set_recovery_timer() -> void:
@@ -113,3 +120,11 @@ func set_recovery_timer() -> void:
 	recovery_timer.one_shot = true
 	add_child(recovery_timer)
 	recovery_timer.start(recovery_time)
+
+
+func set_recovery_time_left() -> void:
+	recovery_time_left_timer = Timer.new()
+	recovery_time_left_timer.one_shot = true
+	add_child(recovery_time_left_timer)
+	recovery_time_left_timer.start(recovery_time_left)
+	$TimerDisplay.visible = true

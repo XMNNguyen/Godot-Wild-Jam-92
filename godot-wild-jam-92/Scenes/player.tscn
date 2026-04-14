@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://csbyysnt1jafe" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bipg8rmp0ecga" path="res://Scenes/PlayerCamera.tscn" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://bbebg4mj0aq7s" path="res://Scenes/Sprites/wizard_cat.tscn" id="3_6t5aa"]
-[ext_resource type="Texture2D" uid="uid://bomvgdevi4owm" path="res://Art+Sprites/Particles/stun.png" id="4_vgqql"]
+[ext_resource type="Texture2D" uid="uid://bkno83k31gxft" path="res://Art+Sprites/Particles/stun.png" id="4_vgqql"]
+[ext_resource type="PackedScene" uid="uid://oj5050ep51i1" path="res://Scenes/particles/smoke_particles.tscn" id="5_fkybt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t5aa"]
 radius = 1.8476563
@@ -20,25 +21,28 @@ radius = 0.7895508
 [sub_resource type="SphereShape3D" id="SphereShape3D_6t5aa"]
 radius = 0.6749164
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("4_vgqql")
 region = Rect2(0, 0, 640, 640)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
 atlas = ExtResource("4_vgqql")
 region = Rect2(0, 640, 640, 640)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
 atlas = ExtResource("4_vgqql")
 region = Rect2(0, 1280, 640, 640)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
 atlas = ExtResource("4_vgqql")
 region = Rect2(0, 1920, 640, 640)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f1ek2"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqql")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fkybt")
 }, {
@@ -47,9 +51,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3smsa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8erm5")
 }],
 "loop": true,
 "name": &"idle",
@@ -104,10 +105,14 @@ shape = SubResource("SphereShape3D_6t5aa")
 
 [node name="StunParticles" type="AnimatedSprite3D" parent="." unique_id=508699389]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4364803, 0)
+visible = false
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_f1ek2")
 animation = &"idle"
 frame_progress = 0.30783373
+
+[node name="SmokeParticles" parent="." unique_id=883487041 instance=ExtResource("5_fkybt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0949821, 0)
 
 [connection signal="area_entered" from="Pivot/Pickup_Range" to="." method="_on_pickup_range_area_entered"]
 [connection signal="area_exited" from="Pivot/Pickup_Range" to="." method="_on_pickup_range_area_exited"]

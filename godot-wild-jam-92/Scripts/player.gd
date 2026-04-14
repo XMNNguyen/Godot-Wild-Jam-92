@@ -70,8 +70,10 @@ func _physics_process(delta: float) -> void:
 		state = INVINCIBLE
 		
 		if recovering:
+			$SmokeParticles.emitting = true
 			$Pivot.rotate(Vector3(0, 1, 0), 0.1)
 	else:
+		$SmokeParticles.emitting = false
 		state = RESET
 	
 	## JUMP

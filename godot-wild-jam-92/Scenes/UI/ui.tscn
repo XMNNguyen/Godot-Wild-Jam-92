@@ -11,6 +11,9 @@ particles_anim_loop = false
 
 [sub_resource type="Theme" id="Theme_fo61o"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_de23q"]
+font_size = 39
+
 [node name="Ui" type="Control" unique_id=80012431]
 layout_mode = 3
 anchors_preset = 15
@@ -52,3 +55,15 @@ show_percentage = false
 offset_right = 156.0
 offset_bottom = 40.0
 script = ExtResource("2_de23q")
+
+[node name="TimerDisplay" type="Label" parent="." unique_id=2028338991]
+visible = false
+layout_mode = 0
+offset_left = 222.0
+offset_top = 107.0
+offset_right = 418.0
+offset_bottom = 218.0
+text = "RESPAWN:
+10"
+label_settings = SubResource("LabelSettings_de23q")
+horizontal_alignment = 1
