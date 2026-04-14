@@ -39,6 +39,15 @@ var recovering = false
 var target : Fruit = null
 var picked_up : Fruit = null
 
+enum {RESET, INVINCIBLE}
+var state = RESET
+var keys = [
+			"RESET",
+			"invincible"
+			]
+
+@onready var sprite_tree = $Pivot/Wizard_Cat/AnimationTree
+@onready var state_machine = sprite_tree["parameters/playback"]
 
 func _ready() -> void:
 	add_to_group("player")
@@ -50,8 +59,13 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if recovering:
-		$Pivot.rotate(Vector3(0, 1, 0), 0.1)
+	if recovering or not is_not_invincible():
+		state = INVINCIBLE
+		
+		if recovering:
+			$Pivot.rotate(Vector3(0, 1, 0), 0.1)
+	else:
+		state = RESET
 	
 	## JUMP
 	# player cant be hurt in air and can only kill in air
@@ -127,6 +141,8 @@ func _physics_process(delta: float) -> void:
 		global_position = global_position.normalized() * Main.WORLD_RADIUS
 	
 	move_and_slide()
+	
+	state_machine.travel(keys[state])
 
 
 # handles player dashing
@@ -155,9 +171,9 @@ func get_pickup_point() -> Node3D:
 func _on_hurtbox_area_entered(area: Area3D) -> void:
 	if (area.name == "Hitbox") and is_not_invincible() and not recovering:
 		signals.player_hit.emit()
+		#state_machine.travel("invincible")
 		set_invincibility_time()
 		set_stun_time()
-
 
 func _on_pickup_range_area_entered(area: Area3D) -> void:
 	if (area.get_parent().is_in_group("fruit")):
