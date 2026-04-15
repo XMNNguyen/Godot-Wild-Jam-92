@@ -16,8 +16,8 @@ func _ready() -> void:
 
 
 func lose_health() -> void:
-	remove_child(get_children().get(0))
-	
+	var heart_to_delete = get_children().get(get_child_count() - 1)
+	heart_to_delete.delete()
 
 
 func gain_health() -> void:

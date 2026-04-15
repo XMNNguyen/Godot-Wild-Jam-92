@@ -1,15 +1,56 @@
 [gd_scene format=3 uid="uid://cajj7c5jy3enk"]
 
-[ext_resource type="Script" uid="uid://cnefbraawxpbs" path="res://Scripts/ui.gd" id="1_jxero"]
-[ext_resource type="Script" uid="uid://bc2gnxkxf8tt5" path="res://Scripts/hearts.gd" id="2_de23q"]
+[ext_resource type="Script" uid="uid://cnefbraawxpbs" path="res://Scripts/Assets/UI/ui.gd" id="1_jxero"]
+[ext_resource type="Texture2D" uid="uid://df8rv8vdo12oq" path="res://Art+Sprites/Assets/ui/fuel_bar_under.png" id="2_1c2ca"]
+[ext_resource type="Script" uid="uid://bc2gnxkxf8tt5" path="res://Scripts/Assets/UI/hearts.gd" id="2_de23q"]
+[ext_resource type="Texture2D" uid="uid://b5apwiirsrm18" path="res://Art+Sprites/Assets/ui/fuel_bar_over.png" id="3_duuxe"]
+[ext_resource type="Texture2D" uid="uid://dbjv1p6fu3nuq" path="res://Art+Sprites/Assets/ui/danger_bar_under.png" id="4_1c2ca"]
+[ext_resource type="Texture2D" uid="uid://qmvwuccd5sfo" path="res://Art+Sprites/Assets/ui/danger_bar_over.png" id="5_1c2ca"]
+[ext_resource type="Script" uid="uid://dd7h66bqwhf7w" path="res://Scripts/Assets/UI/danger_bar.gd" id="6_jfwrg"]
+[ext_resource type="Texture2D" uid="uid://cgmoveqac7r4b" path="res://Art+Sprites/Assets/ui/danger_level.png" id="7_mbl0m"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c7mb3"]
-particles_animation = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3gqk"]
+atlas = ExtResource("7_mbl0m")
+region = Rect2(0, 0, 640, 640)
 
-[sub_resource type="Theme" id="Theme_fo61o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmm6b"]
+atlas = ExtResource("7_mbl0m")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy225"]
+atlas = ExtResource("7_mbl0m")
+region = Rect2(0, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy0us"]
+atlas = ExtResource("7_mbl0m")
+region = Rect2(640, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6tq4"]
+atlas = ExtResource("7_mbl0m")
+region = Rect2(0, 1280, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7te2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3gqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmm6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy225")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy0us")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6tq4")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 1.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_de23q"]
 font_size = 39
@@ -23,31 +64,53 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jxero")
 
-[node name="FuelBar" type="ProgressBar" parent="." unique_id=1495346369]
-modulate = Color(0.92147547, 0.70827705, 1, 1)
-material = SubResource("CanvasItemMaterial_c7mb3")
-layout_mode = 0
-offset_left = 119.0
-offset_top = 416.0
-offset_right = 514.0
-offset_bottom = 456.0
-theme = SubResource("Theme_fo61o")
-page = 0.03
-value = 99.97
-rounded = true
-fill_mode = 1
-show_percentage = false
+[node name="FuelBar" type="TextureProgressBar" parent="." unique_id=1979546824]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.90400004
+anchor_right = 0.50200003
+anchor_bottom = 0.90400004
+offset_left = -120.0
+offset_top = -13.920013
+offset_right = 4718.7197
+offset_bottom = 666.079
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
+nine_patch_stretch = true
+stretch_margin_left = 160
+stretch_margin_top = 160
+stretch_margin_right = 160
+stretch_margin_bottom = 160
+texture_under = ExtResource("2_1c2ca")
+texture_progress = ExtResource("3_duuxe")
 
-[node name="DangerBar" type="ProgressBar" parent="." unique_id=958902918]
-modulate = Color(0.6872149, 0.68721503, 0.6872149, 1)
+[node name="DangerBar" type="TextureProgressBar" parent="." unique_id=129300578]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 200.0
-offset_right = 50.0
-offset_bottom = 348.0
+offset_left = 16.0
+offset_top = 216.99998
+offset_right = 695.9999
+offset_bottom = 2030.3337
+scale = Vector2(0.05, 0.05)
 max_value = 50.0
-fill_mode = 3
-show_percentage = false
+fill_mode = 2
+nine_patch_stretch = true
+stretch_margin_left = 213
+stretch_margin_top = 213
+stretch_margin_right = 213
+stretch_margin_bottom = 213
+texture_under = ExtResource("4_1c2ca")
+texture_progress = ExtResource("5_1c2ca")
+script = ExtResource("6_jfwrg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DangerBar" unique_id=1867417056]
+position = Vector2(420, 40.000305)
+scale = Vector2(15, 15)
+sprite_frames = SubResource("SpriteFrames_t7te2")
+animation = &"idle"
+frame = 4
+frame_progress = 1.0
 
 [node name="Heart_Bar" type="CanvasLayer" parent="." unique_id=1105163091]
 

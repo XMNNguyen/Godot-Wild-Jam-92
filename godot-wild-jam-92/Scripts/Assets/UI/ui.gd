@@ -8,8 +8,8 @@ extends Control
 
 @onready var player = %Player
 @onready var hearts = $Heart_Bar/Hearts
-@onready var danger_bar = $DangerBar
-@onready var fuel_bar = $FuelBar
+@onready var danger_bar : TextureProgressBar = $DangerBar
+@onready var fuel_bar : TextureProgressBar = $FuelBar
 @onready var enemy_path = "res://Scenes/enemy.tscn"
 
 var fuel : int = MAX_FUEL
@@ -31,6 +31,7 @@ func _ready() -> void:
 	signals.player_hit.connect(player_hit)
 	signals.danger_increased.connect(increase_danger)
 	signals.fruit_collected.connect(add_fuel)
+	fuel_bar.value = fuel
 	set_tick()
 
 

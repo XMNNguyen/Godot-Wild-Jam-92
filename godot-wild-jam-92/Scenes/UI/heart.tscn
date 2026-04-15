@@ -1,13 +1,181 @@
 [gd_scene format=3 uid="uid://c7nvt3qmx2g6w"]
 
-[ext_resource type="Texture2D" uid="uid://c4k1f5t5j3jqt" path="res://icon.svg" id="1_3r3sn"]
+[ext_resource type="Texture2D" uid="uid://pisxdgf0x3i7" path="res://Art+Sprites/Assets/ui/heart.png" id="1_3r3sn"]
+[ext_resource type="Script" uid="uid://bvbelpdu0ph6" path="res://Scripts/Assets/UI/heart.gd" id="1_fals4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fals4"]
+atlas = ExtResource("1_3r3sn")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yapju"]
+atlas = ExtResource("1_3r3sn")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sntf"]
+atlas = ExtResource("1_3r3sn")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dra6p"]
+atlas = ExtResource("1_3r3sn")
+region = Rect2(0, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhqky"]
+atlas = ExtResource("1_3r3sn")
+region = Rect2(640, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fav0l"]
+atlas = ExtResource("1_3r3sn")
+region = Rect2(1280, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emora"]
+atlas = ExtResource("1_3r3sn")
+region = Rect2(0, 1280, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk5yi"]
+atlas = ExtResource("1_3r3sn")
+region = Rect2(640, 1280, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt85x"]
+atlas = ExtResource("1_3r3sn")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t3jej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fals4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yapju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sntf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dra6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhqky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fav0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emora")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk5yi")
+}],
+"loop": false,
+"name": &"damaged",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt85x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_1suxk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_8ws0t"]
+resource_name = "hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"damaged"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.13333322, -0.09999988, -0.06666653, 1.1920929e-07, 0.06666678, 0.1000001, 0.1333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 5, 4, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ep586"]
+_data = {
+&"RESET": SubResource("Animation_1suxk"),
+&"hit": SubResource("Animation_8ws0t")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b6h2u"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xyu7n"]
+animation = &"hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f7gao"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_erg0g"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_r4t2q"]
+states/RESET/node = SubResource("AnimationNodeAnimation_b6h2u")
+states/RESET/position = Vector2(357.5, 99)
+states/Start/position = Vector2(190, 100.25)
+states/hit/node = SubResource("AnimationNodeAnimation_xyu7n")
+states/hit/position = Vector2(544, 100.5)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_f7gao"), "RESET", "hit", SubResource("AnimationNodeStateMachineTransition_erg0g")]
+graph_offset = Vector2(172, 8)
 
 [node name="Heart" type="TextureRect" unique_id=534464536]
 custom_minimum_size = Vector2(50, 0)
 offset_right = 140.0
 offset_bottom = 31.0
+script = ExtResource("1_fals4")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=1837335000]
-position = Vector2(24, 24.5)
-scale = Vector2(0.359375, 0.3671875)
-texture = ExtResource("1_3r3sn")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=131235247]
+position = Vector2(29, 54)
+sprite_frames = SubResource("SpriteFrames_t3jej")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=19144164]
+libraries/ = SubResource("AnimationLibrary_ep586")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=334067229]
+tree_root = SubResource("AnimationNodeStateMachine_r4t2q")
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
