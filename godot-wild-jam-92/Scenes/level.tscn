@@ -1,33 +1,45 @@
 [gd_scene format=3 uid="uid://bymv4u4xnm543"]
 
+[ext_resource type="Texture2D" uid="uid://bnd1wwehha4b1" path="res://Art+Sprites/Assets/Platform_color.png" id="1_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://cmjwtowrfevk3" path="res://Scenes/fruit_spawn.tscn" id="2_k5f4k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_51e2h"]
 rough = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51e2h"]
+albedo_texture = ExtResource("1_k5f4k")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tumq0"]
 material = SubResource("StandardMaterial3D_51e2h")
 top_radius = 30.0
 bottom_radius = 30.0
-radial_segments = 16
+radial_segments = 12
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_51e2h"]
 radius = 30.019043
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6phgx"]
+albedo_texture = ExtResource("1_k5f4k")
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_6phgx"]
+material = SubResource("StandardMaterial3D_6phgx")
 top_radius = 4.0
 bottom_radius = 4.0
-radial_segments = 8
+radial_segments = 12
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81xng"]
+albedo_texture = ExtResource("1_k5f4k")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_81xng"]
+material = SubResource("StandardMaterial3D_81xng")
 top_radius = 8.0
 bottom_radius = 8.0
 height = 8.0
-radial_segments = 10
+radial_segments = 12
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tumq0"]
+albedo_texture = ExtResource("1_k5f4k")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wqkje"]
 material = SubResource("StandardMaterial3D_tumq0")
@@ -36,7 +48,11 @@ bottom_radius = 8.0
 height = 4.0
 radial_segments = 10
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqkje"]
+albedo_texture = ExtResource("1_k5f4k")
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_0f350"]
+material = SubResource("StandardMaterial3D_wqkje")
 top_radius = 6.0
 bottom_radius = 6.0
 height = 6.0
@@ -58,11 +74,22 @@ radius = 7.9750977
 height = 2.6018834
 radius = 3.9560547
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_8c0lf"]
+material = SubResource("StandardMaterial3D_tumq0")
+top_radius = 8.0
+bottom_radius = 8.0
+height = 4.0
+radial_segments = 10
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_754fn"]
+albedo_texture = ExtResource("1_k5f4k")
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_k5f4k"]
+material = SubResource("StandardMaterial3D_754fn")
 top_radius = 6.0
 bottom_radius = 6.0
 height = 6.0
-radial_segments = 10
+radial_segments = 12
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k5f4k"]
 height = 4.7558594
@@ -134,7 +161,7 @@ mesh = SubResource("CylinderMesh_81xng")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Hill2" unique_id=2110553377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.095106, 0.3166771, -2.3991299)
-mesh = SubResource("CylinderMesh_wqkje")
+mesh = SubResource("CylinderMesh_8c0lf")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Hill2" unique_id=133693120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.990286, 1.8344853, 8.356554)
