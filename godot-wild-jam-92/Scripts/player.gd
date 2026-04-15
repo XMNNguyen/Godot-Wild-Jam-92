@@ -48,13 +48,13 @@ var keys = [
 
 @onready var sprite_tree = $Pivot/Wizard_Cat/AnimationTree
 @onready var state_machine = sprite_tree["parameters/playback"]
-@onready var smoke_particles = null
 
 func _ready() -> void:
 	add_to_group("player")
 	PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY, GRAVITY)
 	
 	$StunParticles.play("idle")
+	$GPUTrail3D.emitting = false
 	
 
 func _physics_process(delta: float) -> void:
@@ -79,6 +79,7 @@ func _physics_process(delta: float) -> void:
 	## JUMP
 	# player cant be hurt in air and can only kill in air
 	if not recovering and is_not_stunned() and Input.is_action_just_pressed("jump") and num_jumps < 2 and not dashing:
+		$JumpParticles.emitting = true
 		velocity.y = JUMP_VELOCITY
 		num_jumps += 1
 	elif is_on_floor():
@@ -156,12 +157,13 @@ func _physics_process(delta: float) -> void:
 func dash() -> void:
 	can_dash = false
 	dashing = true
+	$GPUTrail3D.emitting = true
 	
 	await get_tree().create_timer(DASH_DURATION).timeout
 	dashing = false
+	$GPUTrail3D.emitting = false
 	
 	await get_tree().create_timer(DASH_CD).timeout
-	
 	can_dash = true
 	
 
@@ -180,8 +182,10 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 		signals.player_hit.emit()
 		signals.shake_camera.emit()
 		signals.slow_time.emit(0.2)
+		velocity = Vector3.ZERO
 		set_invincibility_time()
 		set_stun_time()
+
 
 func _on_pickup_range_area_entered(area: Area3D) -> void:
 	if (area.get_parent().is_in_group("fruit")):

@@ -45,7 +45,9 @@ func _process(delta: float) -> void:
 		fuel_bar.value = fuel
 		set_tick()
 	
-	if spawn_timer and spawn_timer.is_stopped():
+	if (spawn_timer 
+		and spawn_timer.is_stopped() 
+		and (not recovery_time_left_timer or recovery_time_left_timer and recovery_time_left_timer.is_stopped())):
 		var num_enemies = max(1, danger_level / 5)
 		spawn_enemies(num_enemies)
 	
@@ -108,6 +110,10 @@ func player_hit() -> void:
 	player_life -= 1
 	hearts.lose_health()
 	if player_life <= 0:
+		if player.picked_up:
+			player.picked_up.is_picked_up = false
+		player.target = null
+		player.picked_up = null
 		player.position = $"../Cauldron".global_position + Vector3(0, 10, 0)
 		player.recovering = true
 		set_recovery_timer()

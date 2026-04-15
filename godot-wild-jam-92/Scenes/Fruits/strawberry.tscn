@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://dkawfgs4d2x2v"]
 
 [ext_resource type="Script" uid="uid://qx3v4sr31i0s" path="res://Scripts/Assets/Fruits/fruit.gd" id="1_fdkt8"]
-[ext_resource type="PackedScene" uid="uid://dqeadwlx8l1k4" path="res://Art+Sprites/Fruit/Strawberry/Strawberry.glb" id="2_yt0ye"]
+[ext_resource type="PackedScene" uid="uid://c32rm00mjl2ye" path="res://Scenes/Fruits/strawberry_sprite.tscn" id="2_fdkt8"]
+[ext_resource type="Shader" uid="uid://bbvipws0jpv6x" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="3_vmf5g"]
+[ext_resource type="Shader" uid="uid://bb4e803j3v7iy" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="4_k070q"]
+[ext_resource type="Script" uid="uid://dtfr8gl1u76c6" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="5_0ufvp"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://addons/GPUTrail-main/defaults/texture.tres" id="5_k070q"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fdkt8"]
 
@@ -11,6 +15,41 @@ height = 1.7399902
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fdkt8"]
 radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_24o4j"]
+shader = ExtResource("3_vmf5g")
+
+[sub_resource type="Gradient" id="Gradient_k070q"]
+offsets = PackedFloat32Array(0.41037735, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eji7a"]
+gradient = SubResource("Gradient_k070q")
+width = 40
+
+[sub_resource type="Curve" id="Curve_0ufvp"]
+bake_resolution = 16
+_data = [Vector2(0, 0.44680858), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wphb4"]
+width = 32
+curve = SubResource("Curve_0ufvp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8kkm"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_k070q")
+shader_parameter/tex = ExtResource("5_k070q")
+shader_parameter/mask_strength = 1.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_eji7a")
+shader_parameter/curve = SubResource("CurveTexture_wphb4")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 44
+
+[sub_resource type="QuadMesh" id="QuadMesh_66q5u"]
+material = SubResource("ShaderMaterial_i8kkm")
 
 [node name="Strawberry" type="RigidBody3D" unique_id=783218628]
 collision_layer = 4
@@ -23,7 +62,7 @@ metadata/_custom_type_script = "uid://qx3v4sr31i0s"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03858733, 0)
 shape = SubResource("CapsuleShape3D_rrufy")
 
-[node name="Strawberry" parent="." unique_id=1795901922 instance=ExtResource("2_yt0ye")]
+[node name="Strawberry" parent="." unique_id=712853968 instance=ExtResource("2_fdkt8")]
 
 [node name="Pickup_Radius" type="Area3D" parent="." unique_id=1664909461]
 collision_layer = 4
@@ -31,3 +70,22 @@ collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup_Radius" unique_id=543017674]
 shape = SubResource("SphereShape3D_fdkt8")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="." unique_id=728026519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.097975254, -0.095285535, 0.05116713)
+amount = 40
+lifetime = 40.0
+explosiveness = 1.0
+fixed_fps = 59
+visibility_aabb = AABB(-2, -2, -2, 8, 8, 8)
+trail_enabled = true
+process_material = SubResource("ShaderMaterial_24o4j")
+draw_pass_1 = SubResource("QuadMesh_66q5u")
+script = ExtResource("5_0ufvp")
+length = 40
+length_seconds = 0.6779661016949152
+color_ramp = SubResource("GradientTexture1D_eji7a")
+curve = SubResource("CurveTexture_wphb4")
+billboard = true
+_defaults_have_been_set = true
+metadata/_custom_type_script = "uid://dtfr8gl1u76c6"

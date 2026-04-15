@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://dnwn3i1ofj3i4"]
 
 [ext_resource type="Script" uid="uid://qx3v4sr31i0s" path="res://Scripts/Assets/Fruits/fruit.gd" id="1_4vh2g"]
-[ext_resource type="PackedScene" uid="uid://bmqk7fp25xkjc" path="res://Art+Sprites/Fruit/Grapes/Grapes.glb" id="2_drh6v"]
+[ext_resource type="PackedScene" uid="uid://bhfnoalo4onnf" path="res://Scenes/Fruits/grapes_sprite.tscn" id="2_4vh2g"]
+[ext_resource type="Shader" uid="uid://bbvipws0jpv6x" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="3_gc5gd"]
+[ext_resource type="Shader" uid="uid://bb4e803j3v7iy" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="4_1air0"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://addons/GPUTrail-main/defaults/texture.tres" id="5_jep0f"]
+[ext_resource type="Script" uid="uid://dtfr8gl1u76c6" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="6_vihbw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c1k7w"]
 radius = 0.34326172
@@ -9,6 +13,40 @@ height = 0.79003906
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4vh2g"]
 radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onxwg"]
+shader = ExtResource("3_gc5gd")
+
+[sub_resource type="Gradient" id="Gradient_0dm1u"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 0.34117648)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4hcur"]
+gradient = SubResource("Gradient_0dm1u")
+width = 40
+
+[sub_resource type="Curve" id="Curve_jrsyc"]
+bake_resolution = 16
+_data = [Vector2(0, 0.20373958), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kek0e"]
+width = 32
+curve = SubResource("Curve_jrsyc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yp8vs"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_1air0")
+shader_parameter/tex = ExtResource("5_jep0f")
+shader_parameter/mask_strength = 1.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_4hcur")
+shader_parameter/curve = SubResource("CurveTexture_kek0e")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 44
+
+[sub_resource type="QuadMesh" id="QuadMesh_3g8pi"]
+material = SubResource("ShaderMaterial_yp8vs")
 
 [node name="Grapes" type="RigidBody3D" unique_id=1333117928]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -21,7 +59,8 @@ metadata/_custom_type_script = "uid://qx3v4sr31i0s"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25961244, 0)
 shape = SubResource("CapsuleShape3D_c1k7w")
 
-[node name="Grapes" parent="." unique_id=1348003084 instance=ExtResource("2_drh6v")]
+[node name="Grapes" parent="." unique_id=153772930 instance=ExtResource("2_4vh2g")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, -0.33929098, 0)
 
 [node name="Pickup_Radius" type="Area3D" parent="." unique_id=841113134]
 collision_layer = 4
@@ -29,3 +68,22 @@ collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup_Radius" unique_id=36043355]
 shape = SubResource("SphereShape3D_4vh2g")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="." unique_id=1803083654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0042284727, 0.02294612, 0.039114773)
+amount = 40
+lifetime = 40.0
+explosiveness = 1.0
+fixed_fps = 59
+visibility_aabb = AABB(-2, -2, -2, 8, 8, 8)
+trail_enabled = true
+process_material = SubResource("ShaderMaterial_onxwg")
+draw_pass_1 = SubResource("QuadMesh_3g8pi")
+script = ExtResource("6_vihbw")
+length = 40
+length_seconds = 0.6779661016949152
+color_ramp = SubResource("GradientTexture1D_4hcur")
+curve = SubResource("CurveTexture_kek0e")
+billboard = true
+_defaults_have_been_set = true
+metadata/_custom_type_script = "uid://dtfr8gl1u76c6"

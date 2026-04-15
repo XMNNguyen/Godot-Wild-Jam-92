@@ -5,6 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://bbebg4mj0aq7s" path="res://Scenes/Sprites/wizard_cat.tscn" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://bkno83k31gxft" path="res://Art+Sprites/Particles/stun.png" id="4_vgqql"]
 [ext_resource type="PackedScene" uid="uid://oj5050ep51i1" path="res://Scenes/particles/smoke_particles.tscn" id="5_fkybt"]
+[ext_resource type="Shader" uid="uid://bbvipws0jpv6x" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="6_f1ek2"]
+[ext_resource type="Shader" uid="uid://bb4e803j3v7iy" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="7_tx1dd"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://addons/GPUTrail-main/defaults/texture.tres" id="8_gymyn"]
+[ext_resource type="Script" uid="uid://dtfr8gl1u76c6" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="9_pu2lt"]
+[ext_resource type="PackedScene" uid="uid://cvgisghmopyc7" path="res://Scenes/particles/jump_particles.tscn" id="10_tx1dd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t5aa"]
 radius = 1.8476563
@@ -56,6 +61,38 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukyrk"]
+shader = ExtResource("6_f1ek2")
+
+[sub_resource type="Gradient" id="Gradient_r2v2c"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7dp3o"]
+gradient = SubResource("Gradient_r2v2c")
+
+[sub_resource type="Curve" id="Curve_sk1sl"]
+bake_resolution = 16
+_data = [Vector2(0, 0.22469378), 0.0, 0.0, 0, 0, Vector2(0.2706767, 0.731786), 0.0, 0.0, 0, 0, Vector2(0.5263158, 0.30431986), 0.0, 0.0, 0, 0, Vector2(0.74060154, 0.6689233), 0.0, 0.0, 0, 0, Vector2(0.83458644, 0.24564803), 0.0, 0.0, 0, 0, Vector2(0.91353387, 0.45519024), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_h4iuc"]
+curve = SubResource("Curve_sk1sl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x01ak"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_tx1dd")
+shader_parameter/tex = ExtResource("8_gymyn")
+shader_parameter/mask_strength = 1.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_7dp3o")
+shader_parameter/curve = SubResource("CurveTexture_h4iuc")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 44
+
+[sub_resource type="QuadMesh" id="QuadMesh_fd4e3"]
+material = SubResource("ShaderMaterial_x01ak")
 
 [node name="Player" type="CharacterBody3D" unique_id=1612110732 groups=["player"]]
 collision_layer = 2
@@ -113,6 +150,26 @@ frame_progress = 0.30783373
 
 [node name="SmokeParticles" parent="." unique_id=883487041 instance=ExtResource("5_fkybt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0949821, 0)
+visible = false
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="." unique_id=1699520347]
+transform = Transform3D(0.9999958, 0, 0.0028972425, 0, 1, 0, -0.0028972425, 0, 0.9999958, -0.11716366, 0, 0)
+amount = 30
+lifetime = 30.0
+explosiveness = 1.0
+fixed_fps = 59
+trail_enabled = true
+process_material = SubResource("ShaderMaterial_ukyrk")
+draw_pass_1 = SubResource("QuadMesh_fd4e3")
+script = ExtResource("9_pu2lt")
+length = 30
+length_seconds = 0.5084745762711864
+color_ramp = SubResource("GradientTexture1D_7dp3o")
+curve = SubResource("CurveTexture_h4iuc")
+billboard = true
+_defaults_have_been_set = true
+
+[node name="JumpParticles" parent="." unique_id=1075947073 instance=ExtResource("10_tx1dd")]
 
 [connection signal="area_entered" from="Pivot/Pickup_Range" to="." method="_on_pickup_range_area_entered"]
 [connection signal="area_exited" from="Pivot/Pickup_Range" to="." method="_on_pickup_range_area_exited"]
