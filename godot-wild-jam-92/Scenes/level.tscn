@@ -11,6 +11,7 @@ rough = true
 material = SubResource("StandardMaterial3D_51e2h")
 top_radius = 30.0
 bottom_radius = 30.0
+radial_segments = 16
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_51e2h"]
 radius = 30.019043
@@ -18,21 +19,28 @@ radius = 30.019043
 [sub_resource type="CylinderMesh" id="CylinderMesh_6phgx"]
 top_radius = 4.0
 bottom_radius = 4.0
+radial_segments = 8
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_81xng"]
 top_radius = 8.0
 bottom_radius = 8.0
 height = 8.0
+radial_segments = 10
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tumq0"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wqkje"]
+material = SubResource("StandardMaterial3D_tumq0")
 top_radius = 8.0
 bottom_radius = 8.0
 height = 4.0
+radial_segments = 10
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0f350"]
 top_radius = 6.0
 bottom_radius = 6.0
 height = 6.0
+radial_segments = 12
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8c0lf"]
 height = 4.7558594
@@ -49,6 +57,12 @@ radius = 7.9750977
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oqgf2"]
 height = 2.6018834
 radius = 3.9560547
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k5f4k"]
+top_radius = 6.0
+bottom_radius = 6.0
+height = 6.0
+radial_segments = 10
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k5f4k"]
 height = 4.7558594
@@ -124,7 +138,7 @@ mesh = SubResource("CylinderMesh_wqkje")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Hill2" unique_id=133693120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.990286, 1.8344853, 8.356554)
-mesh = SubResource("CylinderMesh_0f350")
+mesh = SubResource("CylinderMesh_k5f4k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hill2" unique_id=880282368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.062349, -0.041934013, -2.336701)
