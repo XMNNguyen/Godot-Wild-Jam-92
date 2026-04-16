@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://iy47m3cpolnp" path="res://Scripts/Assets/Cauldron/cauldron.gd" id="1_2rulr"]
 [ext_resource type="PackedScene" uid="uid://dwdivsabredfv" path="res://Art+Sprites/Assets/Cauldron.glb" id="1_2xink"]
 [ext_resource type="Texture2D" uid="uid://bn2ur6y5ada4v" path="res://Art+Sprites/Particles/fire.png" id="3_r1an6"]
+[ext_resource type="PackedScene" uid="uid://ddkwcu5xcx4bj" path="res://Art+Sprites/Assets/Campfire_Wood.glb" id="4_53ym7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2rulr"]
 height = 0.9850464
@@ -55,6 +56,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hjeww"]
+height = 0.2545166
+radius = 1.3540039
+
 [node name="Cauldron" type="StaticBody3D" unique_id=943779588]
 script = ExtResource("1_2rulr")
 
@@ -73,9 +78,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4044543, 0)
 shape = SubResource("CylinderShape3D_r1an6")
 
 [node name="Fire" type="AnimatedSprite3D" parent="." unique_id=1806193897]
-transform = Transform3D(1.4, 0, 0, 0, 0.5, 0, 0, 0, 0.695, 0.11833882, 0.41251254, 0.07871455)
+transform = Transform3D(1.4, 0, 0, 0, 0.5, 0, 0, 0, 0.695, 0, 0.56037474, 0)
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_v2jri")
 frame_progress = 0.20664054
+
+[node name="Campfire_Wood" parent="." unique_id=302658490 instance=ExtResource("4_53ym7")]
+transform = Transform3D(0.4, 0, 0, 0, 0.2, 0, 0, 0, 0.4, 0, -1.0552853, -0.09448397)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=142271674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0038508, 0)
+shape = SubResource("CylinderShape3D_hjeww")
 
 [connection signal="body_entered" from="Pot_Insert" to="." method="_on_pot_insert_body_entered"]

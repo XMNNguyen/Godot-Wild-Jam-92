@@ -42,4 +42,4 @@ environment = SubResource("Environment_344ge")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.242762, 18.664406, 121.382614)
 
 [node name="Cauldron" parent="." unique_id=943779588 instance=ExtResource("3_8gbba")]
-transform = Transform3D(6, 0, 0, 0, 5.999975, 0.01727874, 0, -0.01727874, 5.999975, -1.529277, 6.545592, 117.63876)
+transform = Transform3D(6, 0, 0, 0, 5.999975, 0.01727874, 0, -0.01727874, 5.999975, -1.529277, 6.3175187, 117.63876)

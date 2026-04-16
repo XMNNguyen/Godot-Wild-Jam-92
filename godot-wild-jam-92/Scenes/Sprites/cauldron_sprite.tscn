@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://2xc6f4i3i6l8"]
+
+[ext_resource type="PackedScene" uid="uid://dwdivsabredfv" path="res://Art+Sprites/Assets/Cauldron.glb" id="1_c2el2"]
+
+[node name="Cauldron" unique_id=578353158 instance=ExtResource("1_c2el2")]
