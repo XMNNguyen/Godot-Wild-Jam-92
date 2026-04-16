@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://qmvwuccd5sfo" path="res://Art+Sprites/Assets/ui/danger_bar_over.png" id="5_1c2ca"]
 [ext_resource type="Script" uid="uid://dd7h66bqwhf7w" path="res://Scripts/Assets/UI/danger_bar.gd" id="6_jfwrg"]
 [ext_resource type="Texture2D" uid="uid://cgmoveqac7r4b" path="res://Art+Sprites/Assets/ui/danger_level.png" id="7_mbl0m"]
-[ext_resource type="Texture2D" uid="uid://c4k1f5t5j3jqt" path="res://icon.svg" id="9_mbl0m"]
 [ext_resource type="Script" uid="uid://big6txb7rko8d" path="res://Scripts/Assets/UI/parallax_2d.gd" id="9_s3gqk"]
+[ext_resource type="Texture2D" uid="uid://ck8dtf8jvm5t7" path="res://Art+Sprites/background.png" id="10_s3gqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s3gqk"]
 atlas = ExtResource("7_mbl0m")
@@ -138,10 +138,11 @@ horizontal_alignment = 1
 [node name="Background" type="CanvasLayer" parent="." unique_id=1546988176]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="Background" unique_id=987792531]
-offset_left = -405.0
-offset_top = -211.0
-offset_right = 1047.0
-offset_bottom = 804.0
-texture = ExtResource("9_mbl0m")
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1469248440]
+repeat_size = Vector2(1280, 0)
+repeat_times = 10
 script = ExtResource("9_s3gqk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D" unique_id=2059984768]
+texture = ExtResource("10_s3gqk")
+offset = Vector2(0, 200)
