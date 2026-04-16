@@ -14,7 +14,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# move background based on camera movement
-	print(position)
 	var stick_direction = Input.get_vector("joystick_left", "joystick_right", "joystick_up", "joystick_down")
 	
 	if stick_direction:

@@ -12,6 +12,7 @@ extends RigidBody3D
 
 var is_picked_up : bool = false
 var is_in_spawn : bool = false
+var targeted : bool = false
 
 func _ready() -> void:
 	freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC

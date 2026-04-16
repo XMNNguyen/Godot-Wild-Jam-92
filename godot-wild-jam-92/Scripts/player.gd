@@ -126,6 +126,7 @@ func _physics_process(delta: float) -> void:
 			signals.danger_increased.emit()
 			
 		target.is_picked_up = true
+		#target.targeted = false
 		target.is_in_spawn = false
 		picked_up = target
 	
@@ -190,10 +191,12 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 func _on_pickup_range_area_entered(area: Area3D) -> void:
 	if (area.get_parent().is_in_group("fruit")):
 		target = area.get_parent()
+		target.targeted = true
 
 
 func _on_pickup_range_area_exited(area: Area3D) -> void:
 	if (area.get_parent().is_in_group("fruit")):
+		target.targeted = true
 		target = null
 
 

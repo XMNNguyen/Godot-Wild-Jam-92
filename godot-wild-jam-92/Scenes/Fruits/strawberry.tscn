@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkawfgs4d2x2v"]
 
-[ext_resource type="Script" uid="uid://qx3v4sr31i0s" path="res://Scripts/Assets/Fruits/fruit.gd" id="1_fdkt8"]
+[ext_resource type="Script" uid="uid://du21bbflb365w" path="res://Scripts/Assets/Fruits/strawberry.gd" id="1_k070q"]
 [ext_resource type="PackedScene" uid="uid://c32rm00mjl2ye" path="res://Scenes/Fruits/strawberry_sprite.tscn" id="2_fdkt8"]
 [ext_resource type="Shader" uid="uid://bbvipws0jpv6x" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="3_vmf5g"]
 [ext_resource type="Shader" uid="uid://bb4e803j3v7iy" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="4_k070q"]
@@ -55,7 +55,7 @@ material = SubResource("ShaderMaterial_i8kkm")
 collision_layer = 4
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_fdkt8")
-script = ExtResource("1_fdkt8")
+script = ExtResource("1_k070q")
 COLOR = Color(1, 0, 0, 1)
 SCORE = 10
 metadata/_custom_type_script = "uid://qx3v4sr31i0s"

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnwn3i1ofj3i4"]
 
-[ext_resource type="Script" uid="uid://qx3v4sr31i0s" path="res://Scripts/Assets/Fruits/fruit.gd" id="1_4vh2g"]
+[ext_resource type="Script" uid="uid://k6hoixsa64e1" path="res://Scripts/Assets/Fruits/grapes.gd" id="1_gc5gd"]
 [ext_resource type="PackedScene" uid="uid://bhfnoalo4onnf" path="res://Scenes/Fruits/grapes_sprite.tscn" id="2_4vh2g"]
 [ext_resource type="Shader" uid="uid://bbvipws0jpv6x" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="3_gc5gd"]
 [ext_resource type="Shader" uid="uid://bb4e803j3v7iy" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="4_1air0"]
@@ -52,7 +52,7 @@ material = SubResource("ShaderMaterial_yp8vs")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_4vh2g")
+script = ExtResource("1_gc5gd")
 COLOR = Color(0, 1, 0, 1)
 SCORE = 10
 metadata/_custom_type_script = "uid://qx3v4sr31i0s"
