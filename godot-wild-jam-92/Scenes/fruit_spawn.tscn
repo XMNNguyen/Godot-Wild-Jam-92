@@ -10,9 +10,7 @@ metallic_specular = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_x2vna"]
 material = SubResource("StandardMaterial3D_xdbv1")
-top_radius = 1.0
-bottom_radius = 1.0
-height = 0.2
+height = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_36qjw"]
 size = Vector3(2.7559814, 2.0178223, 2.5825806)
@@ -24,11 +22,12 @@ size = Vector3(2.8380127, 1, 0.26879883)
 size = Vector3(1.2370758, 1, 0.26879883)
 
 [node name="FruitSpawn" type="StaticBody3D" unique_id=250028317]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("1_amn31")
 FRUIT_TYPES = Array[String](["res://Scenes/Fruits/strawberry.tscn", "res://Scenes/Fruits/grapes.tscn", "res://Scenes/Fruits/blueberry.tscn"])
 
 [node name="Platform" type="MeshInstance3D" parent="." unique_id=1554280486]
-transform = Transform3D(0.99943155, -0.03371337, 0, 0.03371337, 0.99943155, 0, 0, 0, 1, 1.8867221, 0.09491551, 1.1991525)
+transform = Transform3D(0.99943155, -0.03371337, 0, 0.033712354, 0.9994014, -0.007766637, 0.0002618395, 0.007762222, 0.99996984, 1.8867221, 0.020371556, 1.1991525)
 mesh = SubResource("CylinderMesh_x2vna")
 
 [node name="SpawnPoint" type="Node3D" parent="." unique_id=894685856]

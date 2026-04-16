@@ -198,22 +198,19 @@ shape = SubResource("CylinderShape3D_k5f4k")
 [node name="Spawners" type="Node3D" parent="." unique_id=4379949]
 
 [node name="FruitSpawn" parent="Spawners" unique_id=250028317 instance=ExtResource("2_k5f4k")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 25.639404, 5.460083, 3.528685)
+transform = Transform3D(0.30411622, 0, 0.95263493, 0, 1, 0, -0.95263493, 0, 0.30411622, 25.639404, 5.061333, 3.528685)
 
 [node name="FruitSpawn2" parent="Spawners" unique_id=1689444436 instance=ExtResource("2_k5f4k")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 16.485653, 0, -17.339752)
+transform = Transform3D(-0.30255294, 0, 0.95313257, 0, 1, 0, -0.95313257, 0, -0.30255294, 16.485653, -0.20544815, -13.42176)
 
 [node name="FruitSpawn3" parent="Spawners" unique_id=475867940 instance=ExtResource("2_k5f4k")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -22.413546, 0, -9.38146)
+transform = Transform3D(-0.9808023, 0, -0.19500473, 0, 1, 0, 0.19500473, 0, -0.9808023, -19.81994, -0.32724857, -10.748767)
 
 [node name="FruitSpawn4" parent="Spawners" unique_id=2110761026 instance=ExtResource("2_k5f4k")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -19.71692, 3.3491502, 1.8692303)
+transform = Transform3D(-0.62875056, 0, -0.7776071, 0, 1, 0, 0.7776071, 0, -0.62875056, -21.221924, 4.1301713, 8.825824)
 
 [node name="FruitSpawn5" parent="Spawners" unique_id=1693054362 instance=ExtResource("2_k5f4k")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -11.050642, 1.6763501, -17.980429)
-
-[node name="FruitSpawn6" parent="Spawners" unique_id=875262104 instance=ExtResource("2_k5f4k")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.798738, -24.627853)
+transform = Transform3D(-0.5309844, 0, 0.8473816, 0, 1, 0, -0.8473816, 0, -0.5309844, -2.649078, 1.3778996, -19.615152)
 
 [node name="Boundery" type="CollisionShape3D" parent="." unique_id=2047944521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.266138, -29.588818)

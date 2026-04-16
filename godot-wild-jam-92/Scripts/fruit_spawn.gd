@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 func spawn_fruit(fruit_type : String = FRUIT_TYPES[randi_range(0, FRUIT_TYPES.size() - 1)]):
 	var fruit_instance : Fruit = load(fruit_type).instantiate()
 	cur_fruit = fruit_instance
+	fruit_instance.scale = Vector3(0.75, 0.75, 0.75)
 	fruit_instance.is_in_spawn = true
 	fruit_instance.position = $SpawnPoint.position 
 	add_child(fruit_instance)
