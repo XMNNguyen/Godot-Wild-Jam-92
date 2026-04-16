@@ -13,6 +13,7 @@ config_version=5
 config/name="Godot-Wild-Jam-92"
 run/main_scene="uid://xorhewq25ec0"
 config/features=PackedStringArray("4.6", "Forward Plus")
+run/max_fps=30
 config/icon="res://icon.svg"
 
 [audio]
@@ -29,6 +30,7 @@ window/size/viewport_width=640
 window/size/viewport_height=480
 window/size/mode=3
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [global_group]
 

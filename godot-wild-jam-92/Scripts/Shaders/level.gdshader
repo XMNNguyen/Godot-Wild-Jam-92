@@ -5,7 +5,7 @@ uniform sampler2D noise_texture;
 uniform sampler2D cloud_noise_texture;
 uniform float noise_strength : hint_range(0.0, 1.0) = 0.8;
 uniform vec2 cloud_dir = vec2(1.0, 0.0);
-uniform float scroll_speed = 0.05;
+uniform float scroll_speed = 0.1;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -16,7 +16,7 @@ void fragment() {
 	float noise_color = texture(noise_texture, UV).r;
 	
 	//handle clouds
-	vec2 scroll = cloud_dir * TIME * scroll_speed;
+	vec2 scroll = cloud_dir * TIME * scroll_speed * 0.1;
 	float cloud_color = texture(cloud_noise_texture, UV + scroll).r;
 	
 	float darkness = mix(1.0, noise_color, noise_strength);
