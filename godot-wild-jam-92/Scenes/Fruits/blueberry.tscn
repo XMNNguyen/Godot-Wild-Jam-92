@@ -52,6 +52,8 @@ material = SubResource("ShaderMaterial_r3qpb")
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_ar2up")
+COLOR = Color(0, 0, 1, 1)
+SCORE = 10
 metadata/_custom_type_script = "uid://qx3v4sr31i0s"
 
 [node name="Blueberry" parent="." unique_id=970657818 instance=ExtResource("2_ar2up")]

@@ -17,7 +17,7 @@ var danger_level : int = 50
 var player_life : int = MAX_LIFE
 
 # TIMERS
-var tick_time : float = 5.0
+var tick_time : float = 1.0
 var tick_timer : Timer = null
 var spawn_time : float = 10.0
 var spawn_timer : Timer = null
@@ -70,7 +70,7 @@ func set_tick() -> void:
 	tick_timer = Timer.new()
 	tick_timer.one_shot = true
 	add_child(tick_timer)
-	tick_timer.start(tick_time)
+	tick_timer.start(tick_time * (1.2 - (MAX_DANGER / danger_level)))
 
 
 func add_fuel(fuel_amount : float) -> void:
