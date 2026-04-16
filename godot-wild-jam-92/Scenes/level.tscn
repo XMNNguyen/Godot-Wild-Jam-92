@@ -1,16 +1,38 @@
 [gd_scene format=3 uid="uid://bymv4u4xnm543"]
 
+[ext_resource type="Shader" uid="uid://dspi200rft8dy" path="res://Scripts/Shaders/level.gdshader" id="1_6phgx"]
 [ext_resource type="Texture2D" uid="uid://bnd1wwehha4b1" path="res://Art+Sprites/Assets/Platform_color.png" id="1_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://cmjwtowrfevk3" path="res://Scenes/fruit_spawn.tscn" id="2_k5f4k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_51e2h"]
 rough = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51e2h"]
-albedo_texture = ExtResource("1_k5f4k")
+[sub_resource type="Gradient" id="Gradient_6phgx"]
+colors = PackedColorArray(0, 0, 0, 1, 0.13333334, 0.13333334, 0.13333334, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_81xng"]
+noise_type = 2
+seed = 8
+frequency = 0.5
+fractal_octaves = 6
+fractal_lacunarity = 1.5
+fractal_gain = 10.0
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wqkje"]
+noise = SubResource("FastNoiseLite_81xng")
+color_ramp = SubResource("Gradient_6phgx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_81xng"]
+render_priority = 0
+shader = ExtResource("1_6phgx")
+shader_parameter/main_texture = ExtResource("1_k5f4k")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_wqkje")
+shader_parameter/noise_strength = 0.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tumq0"]
-material = SubResource("StandardMaterial3D_51e2h")
+lightmap_size_hint = Vector2i(1, 0)
+material = SubResource("ShaderMaterial_81xng")
 top_radius = 30.0
 bottom_radius = 30.0
 radial_segments = 12
@@ -109,6 +131,7 @@ mesh = SubResource("CylinderMesh_tumq0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1377540485]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00109, 0)
+visible = false
 shape = SubResource("CylinderShape3D_51e2h")
 
 [node name="Hill" type="StaticBody3D" parent="." unique_id=1258597138]
