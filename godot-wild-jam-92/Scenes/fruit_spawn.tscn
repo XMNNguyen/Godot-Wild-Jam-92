@@ -1,18 +1,100 @@
 [gd_scene format=3 uid="uid://cmjwtowrfevk3"]
 
 [ext_resource type="Script" uid="uid://bux3sv6fls1oi" path="res://Scripts/fruit_spawn.gd" id="1_amn31"]
+[ext_resource type="PackedScene" uid="uid://bcasekvuvpcs6" path="res://Art+Sprites/Assets/Village.glb" id="2_xdbv1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdbv1"]
+albedo_color = Color(0.6932824, 0.6463253, 0.056936905, 1)
+metallic = 1.0
+metallic_specular = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_x2vna"]
+material = SubResource("StandardMaterial3D_xdbv1")
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_36qjw"]
+size = Vector3(2.7559814, 2.0178223, 2.5825806)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xdbv1"]
+size = Vector3(2.8380127, 1, 0.26879883)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mex6e"]
+size = Vector3(1.2370758, 1, 0.26879883)
 
 [node name="FruitSpawn" type="StaticBody3D" unique_id=250028317]
 script = ExtResource("1_amn31")
 FRUIT_TYPES = Array[String](["res://Scenes/Fruits/strawberry.tscn", "res://Scenes/Fruits/grapes.tscn", "res://Scenes/Fruits/blueberry.tscn"])
 
 [node name="Platform" type="MeshInstance3D" parent="." unique_id=1554280486]
+transform = Transform3D(0.99943155, -0.03371337, 0, 0.03371337, 0.99943155, 0, 0, 0, 1, 1.8867221, 0.09491551, 1.1991525)
 mesh = SubResource("CylinderMesh_x2vna")
 
 [node name="SpawnPoint" type="Node3D" parent="." unique_id=894685856]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4274254, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8547368, 1.4274254, 1.1941247)
+
+[node name="Village" parent="." unique_id=620788004 instance=ExtResource("2_xdbv1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1090946, 1.0821247, 1.0346167)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1286955815]
+transform = Transform3D(0.97919446, 0, -0.20292403, 0, 1, 0, 0.20292403, 0, 0.97919446, 1.7853792, 1.1356759, 5.447174)
+shape = SubResource("BoxShape3D_36qjw")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=504309378]
+transform = Transform3D(1.0000015, 0, 0.0015890002, 0, 1, 0, -0.0015890002, 0, 1.0000015, 6.109066, 1.0579352, 0.99312973)
+shape = SubResource("BoxShape3D_36qjw")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="." unique_id=1966653663]
+transform = Transform3D(0.018359795, 0, 0.99983144, 0, 1, 0, -0.99983144, 0, 0.018359795, 6.0999684, 3.3082669, 2.982873)
+depth = 3.1
+polygon = PackedVector2Array(0.32625246, -1.2162104, 1.9819689, 0.09658432, 3.5928454, -1.2478726)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="." unique_id=2002626337]
+transform = Transform3D(-0.98008907, 0, 0.19856422, 0, 1, 0, -0.19856422, 0, -0.98008907, 3.7043505, 3.38481, 5.8883266)
+depth = 3.1
+polygon = PackedVector2Array(0.32625246, -1.2162104, 1.9819689, 0.09658432, 3.5928454, -1.2478726)
+
+[node name="FenceBoundery" type="CollisionShape3D" parent="." unique_id=1726295674]
+transform = Transform3D(0.66292083, 0, -0.7486899, 0, 1, 0, 0.7486899, 0, 0.66292083, 5.1742806, 0.5119146, -2.5853486)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery" unique_id=1960625144]
+transform = Transform3D(0.8290379, 0, -0.559193, 0, 1, 0, 0.559193, 0, 0.8290379, 2.2897902, -0.03440869, 0.67233896)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4" unique_id=855510186]
+transform = Transform3D(0.4051893, 0, 0.91423225, 0, 1, 0, -0.91423225, 0, 0.4051893, -3.9897976, 0.07150173, 2.8921552)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4" unique_id=535832228]
+transform = Transform3D(0.9036572, 0, -0.4282572, 0, 1, 0, 0.4282572, 0, 0.9036572, 2.7708986, 0.15063679, 0.09493303)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4" unique_id=1028079040]
+transform = Transform3D(0.9036572, 0, -0.42825717, 0, 1, 0, 0.42825717, 0, 0.9036572, 2.5892334, -0.035569787, 0.61524487)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=1368664676]
+transform = Transform3D(0.8262067, 0, -0.5633675, 0, 1, 0, 0.5633675, 0, 0.8262067, 2.5401173, 0.066749215, 0.66135406)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=234608475]
+transform = Transform3D(0.90465605, 0, -0.42614245, 0, 1, 0, 0.42614245, 0, 0.90465605, 2.5401168, -0.06768787, 0.6613536)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=29625]
+transform = Transform3D(0.8219451, 0, -0.56956613, 0, 1, 0, 0.56956613, 0, 0.8219451, 2.5023725, -0.0049647093, 0.6953926)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=1919435930]
+transform = Transform3D(0.90815747, 0, -0.41862762, 0, 1, 0, 0.41862762, 0, 0.90815747, 2.6639886, -0.0049647093, 0.5590048)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=2081378351]
+transform = Transform3D(0.8425743, 0, -0.53857917, 0, 1, 0, 0.53857917, 0, 0.8425743, 2.5590382, -0.0049647093, 0.88531756)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=1857396967]
+transform = Transform3D(0.43313998, 0, -0.9013261, 0, 1, 0, 0.9013261, 0, 0.43313998, 4.842437, -0.0049647093, 3.067934)
+shape = SubResource("BoxShape3D_mex6e")
