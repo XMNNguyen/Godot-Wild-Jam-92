@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cv12mgfyr1wu0"]
 
 [ext_resource type="Script" uid="uid://iy47m3cpolnp" path="res://Scripts/Assets/Cauldron/cauldron.gd" id="1_2rulr"]
-[ext_resource type="PackedScene" uid="uid://dwdivsabredfv" path="res://Art+Sprites/Assets/Cauldron.glb" id="1_2xink"]
+[ext_resource type="PackedScene" uid="uid://2xc6f4i3i6l8" path="res://Scenes/Sprites/cauldron_sprite.tscn" id="2_53ym7"]
 [ext_resource type="Texture2D" uid="uid://bn2ur6y5ada4v" path="res://Art+Sprites/Particles/fire.png" id="3_r1an6"]
 [ext_resource type="PackedScene" uid="uid://ddkwcu5xcx4bj" path="res://Art+Sprites/Assets/Campfire_Wood.glb" id="4_53ym7"]
 
@@ -63,7 +63,7 @@ radius = 1.3540039
 [node name="Cauldron" type="StaticBody3D" unique_id=943779588]
 script = ExtResource("1_2rulr")
 
-[node name="Cauldron" parent="." unique_id=1234669519 instance=ExtResource("1_2xink")]
+[node name="Cauldron" parent="." unique_id=578353158 instance=ExtResource("2_53ym7")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=466541025]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28634644, 0)

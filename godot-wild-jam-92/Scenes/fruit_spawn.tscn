@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cmjwtowrfevk3"]
 
 [ext_resource type="Script" uid="uid://bux3sv6fls1oi" path="res://Scripts/fruit_spawn.gd" id="1_amn31"]
-[ext_resource type="PackedScene" uid="uid://bcasekvuvpcs6" path="res://Art+Sprites/Assets/Village.glb" id="2_xdbv1"]
+[ext_resource type="PackedScene" uid="uid://ca30cpc66j3sl" path="res://Scenes/Sprites/village.tscn" id="2_xdbv1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdbv1"]
 albedo_color = Color(0.6932824, 0.6463253, 0.056936905, 1)
@@ -23,6 +23,8 @@ size = Vector3(1.2370758, 1, 0.26879883)
 
 [node name="FruitSpawn" type="StaticBody3D" unique_id=250028317]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+collision_layer = 3
+collision_mask = 7
 script = ExtResource("1_amn31")
 FRUIT_TYPES = Array[String](["res://Scenes/Fruits/strawberry.tscn", "res://Scenes/Fruits/grapes.tscn", "res://Scenes/Fruits/blueberry.tscn"])
 
@@ -30,11 +32,11 @@ FRUIT_TYPES = Array[String](["res://Scenes/Fruits/strawberry.tscn", "res://Scene
 transform = Transform3D(0.99943155, -0.03371337, 0, 0.033712354, 0.9994014, -0.007766637, 0.0002618395, 0.007762222, 0.99996984, 1.8867221, 0.020371556, 1.1991525)
 mesh = SubResource("CylinderMesh_x2vna")
 
+[node name="Village" parent="." unique_id=620788004 instance=ExtResource("2_xdbv1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1224837, 1.0951886, 0.9135768)
+
 [node name="SpawnPoint" type="Node3D" parent="." unique_id=894685856]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8547368, 1.4274254, 1.1941247)
-
-[node name="Village" parent="." unique_id=620788004 instance=ExtResource("2_xdbv1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1090946, 1.0821247, 1.0346167)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1286955815]
 transform = Transform3D(0.97919446, 0, -0.20292403, 0, 1, 0, 0.20292403, 0, 0.97919446, 1.7853792, 1.1356759, 5.447174)
@@ -54,46 +56,46 @@ transform = Transform3D(-0.98008907, 0, 0.19856422, 0, 1, 0, -0.19856422, 0, -0.
 depth = 3.1
 polygon = PackedVector2Array(0.32625246, -1.2162104, 1.9819689, 0.09658432, 3.5928454, -1.2478726)
 
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=855510186]
+transform = Transform3D(0.9594127, 0, -0.2820066, 0, 1, 0, 0.2820066, 0, 0.9594127, 2.7992325, 0.54900765, -4.0021024)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="." unique_id=1857396967]
+transform = Transform3D(0.98192835, 0, 0.18925062, 0, 1, 0, -0.18925062, 0, 0.98192835, 0.8156185, 0.57177544, -4.262027)
+shape = SubResource("BoxShape3D_mex6e")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="." unique_id=2081378351]
+transform = Transform3D(0.25473619, 0, 0.9670106, 0, 1, 0, -0.9670106, 0, 0.25473619, -3.3846507, 0.57674015, -0.36085224)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="." unique_id=1919435930]
+transform = Transform3D(-0.3061779, 0, 0.95197487, 0, 1, 0, -0.95197487, 0, -0.3061779, -3.4439297, 0.58170485, 2.3463526)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="." unique_id=29625]
+transform = Transform3D(-0.6765814, 0, 0.7363693, 0, 1, 0, -0.7363693, 0, -0.6765814, -2.0531585, 0.58666956, 4.6862445)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="." unique_id=234608475]
+transform = Transform3D(-0.9755244, 0, 0.21989743, 0, 1, 0, -0.21989743, 0, -0.9755244, 0.23505211, 0.5916343, 5.914882)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="." unique_id=1368664676]
+transform = Transform3D(-0.9762218, 0, -0.21678087, 0, 1, 0, 0.21678087, 0, -0.9762218, 2.8581386, 0.65932214, 6.009861)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="." unique_id=1028079040]
+transform = Transform3D(-0.6844334, 0, -0.7290771, 0, 1, 0, 0.7290771, 0, -0.6844334, 5.0788574, 0.5925729, 4.6105723)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=535832228]
+transform = Transform3D(-0.30626047, 0, -0.95194876, 0, 1, 0, 0.95194876, 0, -0.30626047, 6.457519, 0.6281427, 2.3341799)
+shape = SubResource("BoxShape3D_xdbv1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=1960625144]
+transform = Transform3D(0.13092434, 0, -0.991393, 0, 1, 0, 0.991393, 0, 0.13092434, 6.188857, 0.47750592, -0.4252984)
+shape = SubResource("BoxShape3D_xdbv1")
+
 [node name="FenceBoundery" type="CollisionShape3D" parent="." unique_id=1726295674]
 transform = Transform3D(0.66292083, 0, -0.7486899, 0, 1, 0, 0.7486899, 0, 0.66292083, 5.1742806, 0.5119146, -2.5853486)
 shape = SubResource("BoxShape3D_xdbv1")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery" unique_id=1960625144]
-transform = Transform3D(0.8290379, 0, -0.559193, 0, 1, 0, 0.559193, 0, 0.8290379, 2.2897902, -0.03440869, 0.67233896)
-shape = SubResource("BoxShape3D_xdbv1")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4" unique_id=855510186]
-transform = Transform3D(0.4051893, 0, 0.91423225, 0, 1, 0, -0.91423225, 0, 0.4051893, -3.9897976, 0.07150173, 2.8921552)
-shape = SubResource("BoxShape3D_xdbv1")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4" unique_id=535832228]
-transform = Transform3D(0.9036572, 0, -0.4282572, 0, 1, 0, 0.4282572, 0, 0.9036572, 2.7708986, 0.15063679, 0.09493303)
-shape = SubResource("BoxShape3D_xdbv1")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4" unique_id=1028079040]
-transform = Transform3D(0.9036572, 0, -0.42825717, 0, 1, 0, 0.42825717, 0, 0.9036572, 2.5892334, -0.035569787, 0.61524487)
-shape = SubResource("BoxShape3D_xdbv1")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=1368664676]
-transform = Transform3D(0.8262067, 0, -0.5633675, 0, 1, 0, 0.5633675, 0, 0.8262067, 2.5401173, 0.066749215, 0.66135406)
-shape = SubResource("BoxShape3D_xdbv1")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=234608475]
-transform = Transform3D(0.90465605, 0, -0.42614245, 0, 1, 0, 0.42614245, 0, 0.90465605, 2.5401168, -0.06768787, 0.6613536)
-shape = SubResource("BoxShape3D_xdbv1")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=29625]
-transform = Transform3D(0.8219451, 0, -0.56956613, 0, 1, 0, 0.56956613, 0, 0.8219451, 2.5023725, -0.0049647093, 0.6953926)
-shape = SubResource("BoxShape3D_xdbv1")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=1919435930]
-transform = Transform3D(0.90815747, 0, -0.41862762, 0, 1, 0, 0.41862762, 0, 0.90815747, 2.6639886, -0.0049647093, 0.5590048)
-shape = SubResource("BoxShape3D_xdbv1")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=2081378351]
-transform = Transform3D(0.8425743, 0, -0.53857917, 0, 1, 0, 0.53857917, 0, 0.8425743, 2.5590382, -0.0049647093, 0.88531756)
-shape = SubResource("BoxShape3D_xdbv1")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="FenceBoundery/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4/CollisionShape3D4" unique_id=1857396967]
-transform = Transform3D(0.43313998, 0, -0.9013261, 0, 1, 0, 0.9013261, 0, 0.43313998, 4.842437, -0.0049647093, 3.067934)
-shape = SubResource("BoxShape3D_mex6e")

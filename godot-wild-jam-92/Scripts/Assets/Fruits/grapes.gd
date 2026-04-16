@@ -14,10 +14,10 @@ func _process(delta: float) -> void:
 	
 	# if it is targetted, highlight white
 	if targeted:
-		var material : StandardMaterial3D = sprite.get_active_material(0).duplicate()
+		var material : StandardMaterial3D = sprite.get_active_material(1).duplicate()
 		material.emission = Color.WHITE
-		sprite.set_surface_override_material(0, material)
+		sprite.set_surface_override_material(1, material)
 	else:
-		var material : StandardMaterial3D = sprite.get_active_material(0).duplicate()
+		var material : StandardMaterial3D = sprite.get_active_material(1).duplicate()
 		material.emission = COLOR
-		sprite.set_surface_override_material(0, material)
+		sprite.set_surface_override_material(1, material)

@@ -198,7 +198,8 @@ func _on_pickup_range_area_entered(area: Area3D) -> void:
 
 func _on_pickup_range_area_exited(area: Area3D) -> void:
 	if (area.get_parent().is_in_group("fruit")):
-		target.targeted = false
+		if target:
+			target.targeted = false
 		target = null
 
 

@@ -37,20 +37,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# handle the respawn timer for the player
 	if recovery_time_left_timer and not recovery_time_left_timer.is_stopped():
 		print("RESPAWN:\n" + str(floor(recovery_time_left_timer.time_left)))
 		$TimerDisplay.text = "RESPAWN:\n" + str(int(ceil(recovery_time_left_timer.time_left)))
-	
-	if tick_timer and tick_timer.is_stopped():
-		fuel -= 1
-		fuel_bar.value = fuel
-		set_tick()
-	
-	if (spawn_timer 
-		and spawn_timer.is_stopped() 
-		and (not recovery_time_left_timer or recovery_time_left_timer and recovery_time_left_timer.is_stopped())):
-		var num_enemies = max(1, danger_level / 5)
-		spawn_enemies(num_enemies)
 	
 	if player.recovering and recovery_timer and recovery_timer.is_stopped():
 		player_life += 1
@@ -61,6 +51,31 @@ func _process(delta: float) -> void:
 			$TimerDisplay.visible = false
 		else:
 			set_recovery_timer()
+	
+	# update the fuel
+	update_fuel()
+	
+	# handle enemy spawning
+	if (spawn_timer 
+		and spawn_timer.is_stopped() 
+		and (not recovery_time_left_timer or recovery_time_left_timer and recovery_time_left_timer.is_stopped())):
+		var num_enemies = max(1, danger_level / 5.0)
+		spawn_enemies(num_enemies)
+
+
+## HANDLES FUEL BAR LOGIC
+func update_fuel() -> void:
+	if tick_timer and tick_timer.is_stopped():
+		fuel -= 1
+		fuel_bar.value = fuel
+		set_tick()
+	
+	if fuel <= (MAX_FUEL / 2.0):
+		fuel_bar.tint_progress = Color.LIGHT_GREEN
+	elif fuel <= (MAX_FUEL / 4.0):
+		fuel_bar.tint_progress = Color.RED
+	else:
+		fuel_bar.tint_progress = Color.WHITE
 	
 	if fuel <= 0:
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
@@ -115,7 +130,7 @@ func player_hit() -> void:
 			player.picked_up.is_picked_up = false
 		player.target = null
 		player.picked_up = null
-		player.position = $"../Cauldron".global_position + Vector3(0, 10, 0)
+		player.position = $"../../Cauldron".global_position + Vector3(0, 10, 0)
 		player.recovering = true
 		set_recovery_timer()
 		set_recovery_time_left()

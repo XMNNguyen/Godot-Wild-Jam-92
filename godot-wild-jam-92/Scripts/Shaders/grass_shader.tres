@@ -1,73 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dbfrkpyr1epl7"]
 
-[ext_resource type="Texture2D" uid="uid://bnd1wwehha4b1" path="res://Art+Sprites/Assets/Platform_color.png" id="2_e6ndn"]
-
-[sub_resource type="Shader" id="Shader_tdedc"]
-code = "shader_type spatial;
-render_mode depth_prepass_alpha;
-
-uniform sampler2D main_texture;
-uniform sampler2D noise_texture;
-uniform sampler2D cloud_noise_texture;
-uniform float noise_strength : hint_range(0.0, 1.0) = 0.8;
-uniform vec2 cloud_dir = vec2(1.0, 0.0);
-uniform float scroll_speed = 0.002;
-
-uniform float texture_scale = 0.01;
-uniform float blend_sharpness = 4.0;
-uniform vec3 object_scale = vec3(1.0);
-
-varying vec3 world_position;
-
-void vertex() {
-	// Calculate world position
-	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	
-	// Extract scale from matrix and apply to world_position
-    vec3 scale;
-    scale.x = length(MODEL_MATRIX[0].xyz);
-    scale.y = length(MODEL_MATRIX[1].xyz);
-    scale.z = length(MODEL_MATRIX[2].xyz);
-
-	world_position /= (scale + 100.0);
-}
-
-void fragment() {
-	// get the texture colors
-	vec4 base_color = texture(main_texture, UV);
-	float noise_color = texture(noise_texture, UV).r;
-	
-	//handle clouds
-	vec2 scroll = cloud_dir * TIME * scroll_speed * 0.02;
-	float cloud_color = texture(cloud_noise_texture , (world_position.xz * texture_scale) + scroll).r;
-	
-	// get noise and clouds
-	float darkness = mix(1.0, noise_color, noise_strength);
-	float clouds = mix(1.0, cloud_color, noise_strength);
-    
-    // 4. Apply modulation to the texture color
-    ALBEDO = base_color.rgb * darkness * clouds * vec3(1, 2, 1);
- 
-    ALPHA = base_color.a; // Preserve texture alpha
-}
-
-
-float fresnel(vec3 normal, vec3 view)
-{
-	return 1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0);
-}
-
-
-void light() {
-	float light = max(dot(NORMAL, LIGHT), 0.0) * ATTENUATION;
-
-	light = round(light * 4.0) / 4.0;
-	
-	vec3 diffuse = vec3(light) * LIGHT_COLOR / PI;
-	
-	DIFFUSE_LIGHT += diffuse;
-}
-"
+[ext_resource type="Shader" uid="uid://cu8wti5jssndb" path="res://Scripts/Shaders/fence.gdshader" id="1_tdedc"]
 
 [sub_resource type="Gradient" id="Gradient_81xng"]
 offsets = PackedFloat32Array(0.3974359, 1)
@@ -79,10 +12,13 @@ fractal_octaves = 1
 fractal_lacunarity = 5.0
 fractal_gain = 20.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_81xng"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_38rbh"]
 noise = SubResource("FastNoiseLite_6phgx")
 color_ramp = SubResource("Gradient_81xng")
 seamless = true
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jlrt3"]
+load_path = "res://.godot/imported/Platform_color.png-e690c122dfc6d02eb83172bbb5006854.s3tc.ctex"
 
 [sub_resource type="Gradient" id="Gradient_6phgx"]
 colors = PackedColorArray(0, 0, 0, 1, 0.10561416, 0.10561416, 0.10561416, 1)
@@ -95,17 +31,17 @@ fractal_lacunarity = 1.5
 fractal_gain = 1.0
 fractal_weighted_strength = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wqkje"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e6ndn"]
 noise = SubResource("FastNoiseLite_81xng")
 color_ramp = SubResource("Gradient_6phgx")
 in_3d_space = true
 
 [resource]
 render_priority = 0
-shader = SubResource("Shader_tdedc")
-shader_parameter/main_texture = ExtResource("2_e6ndn")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_wqkje")
-shader_parameter/cloud_noise_texture = SubResource("NoiseTexture2D_81xng")
+shader = ExtResource("1_tdedc")
+shader_parameter/main_texture = SubResource("CompressedTexture2D_jlrt3")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_e6ndn")
+shader_parameter/cloud_noise_texture = SubResource("NoiseTexture2D_38rbh")
 shader_parameter/noise_strength = 0.8
 shader_parameter/cloud_dir = Vector2(1, 0)
 shader_parameter/scroll_speed = 0.5
