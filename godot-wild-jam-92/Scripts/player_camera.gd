@@ -20,7 +20,14 @@ func _process(delta: float) -> void:
 		
 		h_offset = randf_range(-_cur_shake_strength, _cur_shake_strength)
 		v_offset = randf_range(-_cur_shake_strength, _cur_shake_strength)
-
+	
+	var stick_direction = Input.get_vector("joystick_left", "joystick_right", "joystick_up", "joystick_down")
+	
+	if stick_direction:
+		$"..".rotation.x -= stick_direction.y * sensitivity
+		$"..".rotation.y -= stick_direction.x * sensitivity
+		$"..".rotation.x = clampf($"..".rotation.x, -tilt_limit, tilt_limit)
+		
 func _input(event) -> void:
 	if event is InputEventMouseMotion:
 		#rotation.y -= event.relative.x * sensitivity
