@@ -7,6 +7,7 @@ var color_mix_ratio = 0.6
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	change_color()
+	$Fire.play("default")
 
 
 func change_color(new_color : Color = Color(1,0,0)) -> void:

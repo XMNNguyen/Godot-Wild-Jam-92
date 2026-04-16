@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0wjqjdlyqp5g" path="res://Scenes/enemy.tscn" id="5_kry3j"]
 
 [sub_resource type="Environment" id="Environment_344ge"]
-background_mode = 1
+background_mode = 3
 background_color = Color(0.7587703, 0.8231315, 0.99668103, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
@@ -17,7 +17,10 @@ reflected_light_source = 1
 [node name="Main" type="Node" unique_id=1932542925]
 script = ExtResource("1_344ge")
 
-[node name="Ui" parent="." unique_id=1089604113 instance=ExtResource("2_ynf5e")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=540246766]
+follow_viewport_enabled = true
+
+[node name="Ui" parent="UI" unique_id=1089604113 instance=ExtResource("2_ynf5e")]
 
 [node name="Level" parent="." unique_id=1568260822 instance=ExtResource("1_jjgbg")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.733078, -0.73427486, 7.201477)
@@ -30,6 +33,7 @@ collision_layer = 1
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=599809789]
 transform = Transform3D(0.7084507, 0.0087208245, 0.7057064, -0.7057603, 0.008754068, 0.70839655, 0, -0.99992365, 0.012356638, -0.15108109, 20.836702, 0)
 shadow_enabled = true
+directional_shadow_max_distance = 8192.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1553727087]
 environment = SubResource("Environment_344ge")
@@ -38,4 +42,4 @@ environment = SubResource("Environment_344ge")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.242762, 18.664406, 121.382614)
 
 [node name="Cauldron" parent="." unique_id=943779588 instance=ExtResource("3_8gbba")]
-transform = Transform3D(6, 0, 0, 0, 5.999975, 0.01727874, 0, -0.01727874, 5.999975, -1.529277, 2.4121556, 117.63876)
+transform = Transform3D(6, 0, 0, 0, 5.999975, 0.01727874, 0, -0.01727874, 5.999975, -1.529277, 6.545592, 117.63876)

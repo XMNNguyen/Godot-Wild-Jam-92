@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://qmvwuccd5sfo" path="res://Art+Sprites/Assets/ui/danger_bar_over.png" id="5_1c2ca"]
 [ext_resource type="Script" uid="uid://dd7h66bqwhf7w" path="res://Scripts/Assets/UI/danger_bar.gd" id="6_jfwrg"]
 [ext_resource type="Texture2D" uid="uid://cgmoveqac7r4b" path="res://Art+Sprites/Assets/ui/danger_level.png" id="7_mbl0m"]
+[ext_resource type="Texture2D" uid="uid://c4k1f5t5j3jqt" path="res://icon.svg" id="9_mbl0m"]
+[ext_resource type="Script" uid="uid://big6txb7rko8d" path="res://Scripts/Assets/UI/parallax_2d.gd" id="9_s3gqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s3gqk"]
 atlas = ExtResource("7_mbl0m")
@@ -56,6 +58,8 @@ animations = [{
 font_size = 39
 
 [node name="Ui" type="Control" unique_id=80012431]
+top_level = true
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,3 +134,14 @@ text = "RESPAWN:
 10"
 label_settings = SubResource("LabelSettings_de23q")
 horizontal_alignment = 1
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1546988176]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=987792531]
+offset_left = -405.0
+offset_top = -211.0
+offset_right = 1047.0
+offset_bottom = 804.0
+texture = ExtResource("9_mbl0m")
+script = ExtResource("9_s3gqk")
