@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody3D
 
 # MOVEMENT VARS
-@export var SPEED : float = 10.0
+@export var SPEED : float = 15.0
 @export var JUMP_VELOCITY : float = 20
 @export var GRAVITY : float = 30
 @export var ACCELERATION : float = 15.0
@@ -50,6 +50,7 @@ var keys = [
 @onready var state_machine = sprite_tree["parameters/playback"]
 
 func _ready() -> void:
+	$CameraPivot/SpringArm3D.add_excluded_object(self)
 	add_to_group("player")
 	PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY, GRAVITY)
 	

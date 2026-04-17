@@ -70,10 +70,10 @@ func update_fuel() -> void:
 		fuel_bar.value = fuel
 		set_tick()
 	
-	if fuel <= (MAX_FUEL / 2.0):
-		fuel_bar.tint_progress = Color.LIGHT_GREEN
-	elif fuel <= (MAX_FUEL / 4.0):
-		fuel_bar.tint_progress = Color.RED
+	if fuel <= (MAX_FUEL / 4.0):
+		fuel_bar.tint_progress = Color.DARK_RED
+	elif fuel <= (MAX_FUEL / 3.0):
+		fuel_bar.tint_progress = Color.GOLD
 	else:
 		fuel_bar.tint_progress = Color.WHITE
 	
