@@ -13,7 +13,7 @@ extends Control
 @onready var enemy_path = "res://Scenes/enemy.tscn"
 
 var fuel : int = MAX_FUEL
-var danger_level : int = 0
+var danger_level : int = 50
 var player_life : int = MAX_LIFE
 
 # TIMERS
@@ -90,13 +90,22 @@ func set_tick() -> void:
 
 func add_fuel(fuel_amount : float) -> void:
 	fuel = min(fuel + fuel_amount, MAX_FUEL)
+	
+	# update score
+	global.score += fuel_amount
+	$ScoreDisplay.text = "SCORE: " + str(global.score)
+	
 	fuel_bar.value = fuel
 
 
 func increase_danger() -> void:
 	danger_level += 1
+	
+	# update values that are affected by danger
 	var num_enemies = max(1, danger_level / 5)
 	danger_bar.value = danger_level
+	
+	# whenever danger increases, spawn some enemies
 	spawn_enemies(num_enemies)
 
 

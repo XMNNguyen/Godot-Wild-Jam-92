@@ -2,10 +2,10 @@ class_name Player
 extends CharacterBody3D
 
 # MOVEMENT VARS
-@export var SPEED : float = 15.0
+@export var SPEED : float = 25
 @export var JUMP_VELOCITY : float = 20
 @export var GRAVITY : float = 30
-@export var ACCELERATION : float = 15.0
+@export var ACCELERATION : float = 20.0
 @export var SLOW_DOWN : float = 40.0
 @export var PUSH_FORCE : float = 40.0
 

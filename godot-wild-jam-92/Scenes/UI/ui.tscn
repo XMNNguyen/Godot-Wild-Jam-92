@@ -57,6 +57,9 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_de23q"]
 font_size = 39
 
+[sub_resource type="LabelSettings" id="LabelSettings_s3gqk"]
+font_size = 30
+
 [node name="Ui" type="Control" unique_id=80012431]
 top_level = true
 z_index = 1
@@ -134,6 +137,16 @@ text = "RESPAWN:
 10"
 label_settings = SubResource("LabelSettings_de23q")
 horizontal_alignment = 1
+
+[node name="ScoreDisplay" type="Label" parent="." unique_id=1445370623]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 19.0
+offset_right = 613.0
+offset_bottom = 82.0
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_s3gqk")
+horizontal_alignment = 2
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=1546988176]
 layer = -1

@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://bohbjgd4px4yt"
 [autoload]
 
 signals="*uid://c4ijq67ka5wok"
+global="*uid://byqeb3dfm2e2h"
 
 [display]
 
