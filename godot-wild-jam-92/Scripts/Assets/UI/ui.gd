@@ -91,6 +91,9 @@ func set_tick() -> void:
 func add_fuel(fuel_amount : float) -> void:
 	fuel = min(fuel + fuel_amount, MAX_FUEL)
 	
+	# increase player speed relative to danger level
+	player.cur_speed = player.SPEED * (1.0 + danger_level / MAX_DANGER)
+	
 	# update score
 	global.score += fuel_amount
 	$ScoreDisplay.text = "SCORE: " + str(global.score)

@@ -30,6 +30,7 @@ var invincibility_timer : Timer = null
 
 var score := 0
 var num_jumps := 2
+var cur_speed = SPEED
 var speed = 0
 
 var can_dash = true
@@ -92,10 +93,10 @@ func _physics_process(delta: float) -> void:
 	var relativeDir := Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, $CameraPivot/SpringArm3D.rotation.y)
 	if dashing:
 		$CameraPivot/SpringArm3D.spring_length = lerp($CameraPivot/SpringArm3D.spring_length, 25.0, 0.25)
-		velocity = relativeDir * SPEED * DASH_SPEED
+		velocity = relativeDir * cur_speed * DASH_SPEED
 		velocity.y = 0
 	elif relativeDir and is_not_stunned() and not recovering:
-		speed = move_toward(speed, SPEED, ACCELERATION * delta)
+		speed = move_toward(speed, cur_speed, ACCELERATION * delta)
 		$CameraPivot/SpringArm3D.spring_length = lerp($CameraPivot/SpringArm3D.spring_length, 20.0, 0.25)
 
 		velocity.x = relativeDir.x * speed
