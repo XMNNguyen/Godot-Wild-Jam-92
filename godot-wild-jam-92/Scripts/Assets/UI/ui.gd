@@ -13,7 +13,7 @@ extends Control
 @onready var enemy_path = "res://Scenes/enemy.tscn"
 
 var fuel : int = MAX_FUEL
-var danger_level : int = 50
+var danger_level : int = 0
 var player_life : int = MAX_LIFE
 
 # TIMERS

@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 # MOVEMENT VARS
 @export var SPEED : float = 25
-@export var JUMP_VELOCITY : float = 20
+@export var JUMP_VELOCITY : float = 25
 @export var GRAVITY : float = 30
 @export var ACCELERATION : float = 20.0
 @export var SLOW_DOWN : float = 40.0
