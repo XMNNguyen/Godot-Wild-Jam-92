@@ -78,6 +78,7 @@ func update_fuel() -> void:
 		fuel_bar.tint_progress = Color.WHITE
 	
 	if fuel <= 0:
+		Audio.gameover.play()
 		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 
@@ -97,6 +98,8 @@ func add_fuel(fuel_amount : float) -> void:
 	# update score
 	global.score += fuel_amount
 	$ScoreDisplay.text = "SCORE: " + str(global.score)
+	
+	Audio.collect_sound.play()
 	
 	fuel_bar.value = fuel
 

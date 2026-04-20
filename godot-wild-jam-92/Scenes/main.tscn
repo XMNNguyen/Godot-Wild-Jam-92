@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://tyxyb8u2ab00" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cajj7c5jy3enk" path="res://Scenes/UI/ui.tscn" id="2_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://cv12mgfyr1wu0" path="res://Scenes/cauldron.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://b7cm4yeos42p4" path="res://Scenes/audio.tscn" id="5_6bp64"]
 [ext_resource type="PackedScene" uid="uid://0wjqjdlyqp5g" path="res://Scenes/enemy.tscn" id="5_kry3j"]
 
 [sub_resource type="Environment" id="Environment_344ge"]
@@ -29,6 +30,9 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.999891, -0.014764949, 0, 0.014764949, 0.999891, -8.099133, 0.745203, 129.25946)
 collision_layer = 1
+
+[node name="Audio" parent="Player" unique_id=1495881558 instance=ExtResource("5_6bp64")]
+unique_name_in_owner = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=599809789]
 transform = Transform3D(0.7084507, 0.0087208245, 0.7057064, -0.7057603, 0.008754068, 0.70839655, 0, -0.99992365, 0.012356638, -0.15108109, 20.836702, 0)

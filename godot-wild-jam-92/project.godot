@@ -24,6 +24,7 @@ buses/default_bus_layout="uid://bohbjgd4px4yt"
 
 signals="*uid://c4ijq67ka5wok"
 global="*uid://byqeb3dfm2e2h"
+Audio="*uid://b7cm4yeos42p4"
 
 [display]
 

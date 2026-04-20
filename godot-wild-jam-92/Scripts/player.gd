@@ -72,15 +72,18 @@ func _physics_process(delta: float) -> void:
 		state = INVINCIBLE
 		
 		if recovering:
+			Audio.sizzling.playing = true
 			$SmokeParticles.emitting = true
 			$Pivot.rotate(Vector3(0, 1, 0), 0.1)
 	else:
+		Audio.sizzling.playing = false
 		$SmokeParticles.emitting = false
 		state = RESET
 	
 	## JUMP
 	# player cant be hurt in air and can only kill in air
 	if not recovering and is_not_stunned() and Input.is_action_just_pressed("jump") and num_jumps < 2 and not dashing:
+		Audio.jump_sound.play()
 		$JumpParticles.emitting = true
 		velocity.y = JUMP_VELOCITY
 		num_jumps += 1
@@ -119,11 +122,13 @@ func _physics_process(delta: float) -> void:
 	
 	## ITEM PICKUP AND DROP
 	if not recovering and is_not_stunned() and Input.is_action_just_pressed("pickup") and picked_up:
+		Audio.throw.play()
 		picked_up.is_picked_up = false
 		var throw_dir = Vector3(-$Pivot.global_transform.basis.z.x, 0, -$Pivot.global_transform.basis.z.z)
 		picked_up.apply_central_impulse((throw_dir * THROW_SPEED * picked_up.mass) + (Vector3(velocity.x, 20, velocity.z) * VELOCITY_SCALE * picked_up.mass))
 		picked_up = null
 	elif not recovering and is_not_stunned() and Input.is_action_just_pressed("pickup") and target:
+		Audio.throw.play()
 		if target.is_in_spawn:
 			signals.danger_increased.emit()
 			
@@ -161,6 +166,7 @@ func dash() -> void:
 	can_dash = false
 	dashing = true
 	$GPUTrail3D.emitting = true
+	Audio.dash_sound.play()
 	
 	await get_tree().create_timer(DASH_DURATION).timeout
 	dashing = false
@@ -185,6 +191,7 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 		signals.player_hit.emit()
 		signals.shake_camera.emit()
 		signals.slow_time.emit(0.2)
+		Audio.hit_sound.play()
 		velocity = Vector3.ZERO
 		set_invincibility_time()
 		set_stun_time()
