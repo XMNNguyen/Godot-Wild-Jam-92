@@ -5,6 +5,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_8fo1c"]
 font_size = 50
 
+[sub_resource type="LabelSettings" id="LabelSettings_ojehl"]
+font_size = 20
+font_color = Color(0.49747366, 0.49747366, 0.49747366, 1)
+
 [node name="GameOver" type="Node2D" unique_id=422382651]
 script = ExtResource("1_ojehl")
 
@@ -35,6 +39,16 @@ offset_right = 394.0
 offset_bottom = 443.0
 text = "Exit
 "
+
+[node name="Label2" type="Label" parent="." unique_id=194804634]
+offset_left = 239.0
+offset_top = 65.0
+offset_right = 396.0
+offset_bottom = 149.0
+text = "SCORE: 0
+HIGHSCORE: 0"
+label_settings = SubResource("LabelSettings_ojehl")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
