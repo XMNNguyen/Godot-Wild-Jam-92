@@ -2,7 +2,7 @@ class_name FruitSpawner
 extends StaticBody3D
 
 @export var FRUIT_TYPES : Array[String] = ["res://Scenes/Fruits/strawberry.tscn"]
-@export var SPAWN_TIME : float = 1
+@export var SPAWN_TIME : float = 10
 
 var cd_timer : Timer = null
 
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	# NOTE: temporary if statement
 	if not cur_fruit and not on_cd:
 		set_cd()
-	elif not cur_fruit and not on_cd and cd_timer and cd_timer.is_stopped():
+	elif not cur_fruit and on_cd and cd_timer and cd_timer.is_stopped():
 		on_cd = false
 		spawn_fruit()
 
