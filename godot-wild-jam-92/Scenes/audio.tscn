@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dt4pm0k7l8pr0"]
+
+[ext_resource type="Script" uid="uid://d3fc1wpm1sk7a" path="res://Scripts/sounds.gd" id="1_k46ri"]
+[ext_resource type="AudioStream" uid="uid://b0vuov2672osr" path="res://sounds/freesound_community-sfx_jump_07-80241.mp3" id="2_etkin"]
+[ext_resource type="AudioStream" uid="uid://7cgw4mmrwriw" path="res://sounds/dragon-studio-pop-402324.mp3" id="3_fkw8n"]
+[ext_resource type="AudioStream" uid="uid://ujamcw4mg0u1" path="res://sounds/freesound_crunchpixstudio-bar-increase-cartoon-funny-jump-384919.mp3" id="4_e0u3b"]
+[ext_resource type="AudioStream" uid="uid://dqkhs8ewdqti0" path="res://sounds/freesound_community-kick-hard-8-bit-103746.mp3" id="5_tyt1w"]
+[ext_resource type="AudioStream" uid="uid://c4bgeb5ubuubs" path="res://sounds/dragon-studio-game-over-retro-8bit-sfx-499656.mp3" id="6_38mwv"]
+[ext_resource type="AudioStream" uid="uid://cd0ieog2n4og0" path="res://sounds/freesound_community-boiling-water-sound-62556.mp3" id="7_7stf1"]
+
+[node name="Audio" type="Node" unique_id=1495881558]
+script = ExtResource("1_k46ri")
+
+[node name="jump" type="AudioStreamPlayer3D" parent="." unique_id=515712421]
+stream = ExtResource("2_etkin")
+
+[node name="collect" type="AudioStreamPlayer3D" parent="." unique_id=1981511399]
+stream = ExtResource("3_fkw8n")
+
+[node name="dash" type="AudioStreamPlayer3D" parent="." unique_id=363660270]
+stream = ExtResource("4_e0u3b")
+volume_db = 7.615
+
+[node name="hit" type="AudioStreamPlayer3D" parent="." unique_id=1767637164]
+stream = ExtResource("5_tyt1w")
+
+[node name="gameover" type="AudioStreamPlayer3D" parent="." unique_id=1800291518]
+stream = ExtResource("6_38mwv")
+volume_db = 80.0
+
+[node name="sizzling" type="AudioStreamPlayer3D" parent="." unique_id=853273072]
+stream = ExtResource("7_7stf1")
+volume_db = 60.636
+
+[node name="throw" type="AudioStreamPlayer3D" parent="." unique_id=1453457469]
+stream = ExtResource("4_e0u3b")
