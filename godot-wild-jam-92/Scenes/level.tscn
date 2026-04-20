@@ -15,7 +15,7 @@ radial_segments = 12
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_51e2h"]
 height = 2.15
-radius = 30.019043
+radius = 29.7
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6phgx"]
 material = ExtResource("1_81xng")
@@ -97,7 +97,6 @@ mesh = SubResource("CylinderMesh_tumq0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1377540485]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00109, 0)
-visible = false
 shape = SubResource("CylinderShape3D_51e2h")
 
 [node name="Hill" type="StaticBody3D" parent="." unique_id=1258597138]
@@ -137,7 +136,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.079832, 2.8550014, -2.3588
 shape = SubResource("CylinderShape3D_oqgf2")
 
 [node name="Hill2" type="StaticBody3D" parent="." unique_id=130499249]
-transform = Transform3D(-0.6983992, -0.0011462678, -0.27338105, -0.0031880303, 0.74997646, 0.0049997745, 0.27336487, 0.005817848, -0.6983822, -9.8027, -0.38106918, 7.9132032)
+transform = Transform3D(-0.6983992, -0.0011462678, -0.27338105, -0.0031880303, 0.74997646, 0.0049997745, 0.27336487, 0.005817848, -0.6983822, -7.92348, -0.38106918, 7.9132032)
 physics_material_override = SubResource("PhysicsMaterial_51e2h")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Hill2" unique_id=953344596]
@@ -196,7 +195,7 @@ transform = Transform3D(-0.30255294, 0, 0.95313257, 0, 1, 0, -0.95313257, 0, -0.
 transform = Transform3D(-0.9808023, 0, -0.19500473, 0, 1, 0, 0.19500473, 0, -0.9808023, -19.81994, -0.32724857, -10.748767)
 
 [node name="FruitSpawn4" parent="Spawners" unique_id=2110761026 instance=ExtResource("2_k5f4k")]
-transform = Transform3D(-0.62875056, 0, -0.7776071, 0, 1, 0, 0.7776071, 0, -0.62875056, -21.221924, 4.1301713, 8.825824)
+transform = Transform3D(-0.62875056, 0, -0.7776071, 0, 1, 0, 0.7776071, 0, -0.62875056, -19.654987, 4.1301713, 8.825824)
 
 [node name="FruitSpawn5" parent="Spawners" unique_id=1693054362 instance=ExtResource("2_k5f4k")]
 transform = Transform3D(-0.5309844, 0, 0.8473816, 0, 1, 0, -0.8473816, 0, -0.5309844, -2.649078, 1.3778996, -19.615152)

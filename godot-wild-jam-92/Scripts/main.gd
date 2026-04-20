@@ -1,7 +1,7 @@
 class_name Main
 extends Node
 
-const WORLD_RADIUS : float = 156
+const WORLD_RADIUS : float = 148
 
 var slowdown_timer : Timer = null
 

@@ -23,7 +23,7 @@ follow_viewport_enabled = true
 [node name="Ui" parent="UI" unique_id=1089604113 instance=ExtResource("2_ynf5e")]
 
 [node name="Level" parent="." unique_id=1568260822 instance=ExtResource("1_jjgbg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.733078, -0.73427486, 7.201477)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="Player" parent="." unique_id=1612110732 instance=ExtResource("2_bo1nx")]
 unique_name_in_owner = true
