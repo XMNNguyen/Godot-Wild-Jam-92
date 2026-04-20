@@ -72,11 +72,11 @@ func _physics_process(delta: float) -> void:
 		state = INVINCIBLE
 		
 		if recovering:
-			Audio.sizzling.playing = true
+			%Audio/sizzling.playing = true
 			$SmokeParticles.emitting = true
 			$Pivot.rotate(Vector3(0, 1, 0), 0.1)
 	else:
-		Audio.sizzling.playing = false
+		%Audio/sizzling.playing = false
 		$SmokeParticles.emitting = false
 		state = RESET
 	

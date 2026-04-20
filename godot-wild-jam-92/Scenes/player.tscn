@@ -142,7 +142,6 @@ shape = SubResource("SphereShape3D_6t5aa")
 
 [node name="StunParticles" type="AnimatedSprite3D" parent="." unique_id=508699389]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4364803, 0)
-visible = false
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_f1ek2")
 animation = &"idle"
@@ -150,7 +149,6 @@ frame_progress = 0.30783373
 
 [node name="SmokeParticles" parent="." unique_id=883487041 instance=ExtResource("5_fkybt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0949821, 0)
-visible = false
 
 [node name="GPUTrail3D" type="GPUParticles3D" parent="." unique_id=1699520347]
 transform = Transform3D(0.9999958, 0, 0.0028972425, 0, 1, 0, -0.0028972425, 0, 0.9999958, -0.11716366, 0, 0)

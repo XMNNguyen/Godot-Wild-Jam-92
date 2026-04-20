@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://duwnrap41tu7p"]
+
+[ext_resource type="Script" uid="uid://0nij8mjn0nhk" path="res://Scripts/start_screen.gd" id="1_i8r30"]
+
+[sub_resource type="Gradient" id="Gradient_ainjc"]
+offsets = PackedFloat32Array(0.98888886, 1)
+colors = PackedColorArray(0.58056563, 0.71801317, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_60ddj"]
+gradient = SubResource("Gradient_ainjc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5e717"]
+font_size = 50
+
+[sub_resource type="Gradient" id="Gradient_mtlf8"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nqnrp"]
+gradient = SubResource("Gradient_mtlf8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5a7ho"]
+font_size = 20
+
+[node name="StartScreen" type="Node2D" unique_id=159312825]
+position = Vector2(1, 0)
+script = ExtResource("1_i8r30")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1321176906]
+offset_left = -42.0
+offset_top = -27.0
+offset_right = 730.0
+offset_bottom = 536.0
+texture = SubResource("GradientTexture1D_60ddj")
+
+[node name="Label" type="Label" parent="." unique_id=977645126]
+offset_left = 101.0
+offset_top = 68.0
+offset_right = 560.0
+offset_bottom = 181.0
+text = "PLAYING WITH JAM"
+label_settings = SubResource("LabelSettings_5e717")
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=607883384]
+
+[node name="Controls" type="Button" parent="." unique_id=1867706863]
+offset_left = 256.0
+offset_top = 309.0
+offset_right = 369.0
+offset_bottom = 378.0
+text = "CONTROLS"
+
+[node name="Start" type="Button" parent="." unique_id=132246271]
+offset_left = 256.0
+offset_top = 216.0
+offset_right = 369.0
+offset_bottom = 285.0
+text = "START"
+
+[node name="Exit" type="Button" parent="." unique_id=1505609551]
+offset_left = 256.0
+offset_top = 397.0
+offset_right = 369.0
+offset_bottom = 466.0
+text = "EXIT
+"
+
+[node name="ControlPanel" type="CanvasLayer" parent="." unique_id=2034428779]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="ControlPanel" unique_id=1840792488]
+offset_right = 638.0
+offset_bottom = 481.0
+texture = SubResource("GradientTexture1D_nqnrp")
+
+[node name="Label" type="Label" parent="ControlPanel" unique_id=857822997]
+offset_top = 6.0
+offset_right = 638.0
+offset_bottom = 483.0
+text = "CONTROLS:
+
+MOVE: WASD, ARROWS, LEFT THUMBSTICK
+
+JUMP: SPACEBAR, BOTTOM BUTTON
+
+GRAB/THROW: E, LEFT CLICK, LEFT BUTTON
+
+DASH: SHIFT, RIGHT BUTTON"
+label_settings = SubResource("LabelSettings_5a7ho")
+
+[node name="Hide" type="Button" parent="ControlPanel" unique_id=755365431]
+offset_left = 587.0
+offset_top = 8.0
+offset_right = 628.0
+offset_bottom = 47.0
+text = "X"
+
+[connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ControlPanel/Hide" to="." method="_on_hide_pressed"]
