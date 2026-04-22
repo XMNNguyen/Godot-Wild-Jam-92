@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7ww3hbihveb2"
 path.s3tc="res://.godot/imported/Wizard_Cat_Eye_Color.png-2fd6cf59fd4a1be6c5c62e28e2562b64.s3tc.ctex"
+path.etc2="res://.godot/imported/Wizard_Cat_Eye_Color.png-2fd6cf59fd4a1be6c5c62e28e2562b64.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Art+Sprites/Wizard_Cat_Eye_Color.png"
-dest_files=["res://.godot/imported/Wizard_Cat_Eye_Color.png-2fd6cf59fd4a1be6c5c62e28e2562b64.s3tc.ctex"]
+dest_files=["res://.godot/imported/Wizard_Cat_Eye_Color.png-2fd6cf59fd4a1be6c5c62e28e2562b64.s3tc.ctex", "res://.godot/imported/Wizard_Cat_Eye_Color.png-2fd6cf59fd4a1be6c5c62e28e2562b64.etc2.ctex"]
 
 [params]
 

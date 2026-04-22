@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cq0fr6d37v7q3"
 path.s3tc="res://.godot/imported/Campfire_Wood_Wood_Color.png-1c5206c07c44073e0d89712ea88ecdb8.s3tc.ctex"
+path.etc2="res://.godot/imported/Campfire_Wood_Wood_Color.png-1c5206c07c44073e0d89712ea88ecdb8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Art+Sprites/Assets/Campfire_Wood_Wood_Color.png"
-dest_files=["res://.godot/imported/Campfire_Wood_Wood_Color.png-1c5206c07c44073e0d89712ea88ecdb8.s3tc.ctex"]
+dest_files=["res://.godot/imported/Campfire_Wood_Wood_Color.png-1c5206c07c44073e0d89712ea88ecdb8.s3tc.ctex", "res://.godot/imported/Campfire_Wood_Wood_Color.png-1c5206c07c44073e0d89712ea88ecdb8.etc2.ctex"]
 
 [params]
 

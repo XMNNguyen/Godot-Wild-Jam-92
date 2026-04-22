@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://deaqvc17mme0b"
 path.s3tc="res://.godot/imported/Village_Door_color.png-9a5c7c38f90a5d7785f3ecb6590f50ca.s3tc.ctex"
+path.etc2="res://.godot/imported/Village_Door_color.png-9a5c7c38f90a5d7785f3ecb6590f50ca.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Art+Sprites/Assets/Village_Door_color.png"
-dest_files=["res://.godot/imported/Village_Door_color.png-9a5c7c38f90a5d7785f3ecb6590f50ca.s3tc.ctex"]
+dest_files=["res://.godot/imported/Village_Door_color.png-9a5c7c38f90a5d7785f3ecb6590f50ca.s3tc.ctex", "res://.godot/imported/Village_Door_color.png-9a5c7c38f90a5d7785f3ecb6590f50ca.etc2.ctex"]
 
 [params]
 

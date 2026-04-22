@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bej6p8gt841e2"
 path.s3tc="res://.godot/imported/Grapes_Stem_Color.png-6731aac694dad7ea89d7bfec663c8112.s3tc.ctex"
+path.etc2="res://.godot/imported/Grapes_Stem_Color.png-6731aac694dad7ea89d7bfec663c8112.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Art+Sprites/Fruit/Grapes/Grapes_Stem_Color.png"
-dest_files=["res://.godot/imported/Grapes_Stem_Color.png-6731aac694dad7ea89d7bfec663c8112.s3tc.ctex"]
+dest_files=["res://.godot/imported/Grapes_Stem_Color.png-6731aac694dad7ea89d7bfec663c8112.s3tc.ctex", "res://.godot/imported/Grapes_Stem_Color.png-6731aac694dad7ea89d7bfec663c8112.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkno83k31gxft"
 path.s3tc="res://.godot/imported/stun.png-f22e5802a93b83ae524f378b5edb5402.s3tc.ctex"
+path.etc2="res://.godot/imported/stun.png-f22e5802a93b83ae524f378b5edb5402.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Art+Sprites/Particles/stun.png"
-dest_files=["res://.godot/imported/stun.png-f22e5802a93b83ae524f378b5edb5402.s3tc.ctex"]
+dest_files=["res://.godot/imported/stun.png-f22e5802a93b83ae524f378b5edb5402.s3tc.ctex", "res://.godot/imported/stun.png-f22e5802a93b83ae524f378b5edb5402.etc2.ctex"]
 
 [params]
 

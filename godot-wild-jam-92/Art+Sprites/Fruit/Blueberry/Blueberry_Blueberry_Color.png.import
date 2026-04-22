@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dq60jxrwmvp6q"
 path.s3tc="res://.godot/imported/Blueberry_Blueberry_Color.png-4e69a05516b7c847a01e2c0a0d382f53.s3tc.ctex"
+path.etc2="res://.godot/imported/Blueberry_Blueberry_Color.png-4e69a05516b7c847a01e2c0a0d382f53.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Art+Sprites/Fruit/Blueberry/Blueberry_Blueberry_Color.png"
-dest_files=["res://.godot/imported/Blueberry_Blueberry_Color.png-4e69a05516b7c847a01e2c0a0d382f53.s3tc.ctex"]
+dest_files=["res://.godot/imported/Blueberry_Blueberry_Color.png-4e69a05516b7c847a01e2c0a0d382f53.s3tc.ctex", "res://.godot/imported/Blueberry_Blueberry_Color.png-4e69a05516b7c847a01e2c0a0d382f53.etc2.ctex"]
 
 [params]
 
